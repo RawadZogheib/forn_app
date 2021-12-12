@@ -11,15 +11,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp(
-          title: 'Timer',
+          title: 'Forn_App',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
           //home: FirstPage(),
-          initialRoute: '/Timer',
+          initialRoute: '/Page1',
           routes: {
-            '/page1': (context) => Page1(),
+            '/Page1': (context) => Page1(),
           });
     });
   }

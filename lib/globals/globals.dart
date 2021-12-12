@@ -2,9 +2,8 @@ library mnconsultant.globals;
 
 import 'dart:ui';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:timer/hexColor/hexColor.dart';
+import 'package:forn_app/hexColor/hexColor.dart';
 
 //Version
 const String version = "v1.0";
@@ -43,21 +42,3 @@ const String errorVersion = "New version available.";
 const String errorElse = "Failed to connect... Connection Problem.";
 const String errorException = "OOPs! Something went wrong. Try again in few seconds.";
 const String codeFailed = "your code is incorrect";
-
-clearAll(){
-  fName = null;
-  lName = null;
-  userName = null;
-  email = null;
-  password = null;
-  repassword = null;
-  phoneNumber = null;
-  gender = null;
-  dateOfBirth = null;
-  contrat_Id = null;
-  contrat_name = null;
-  contrat_dollar_per_hour = null;
-  contrat_max_payment = null;
-  contrat_description = null;
-  contrat_code = null;
-}

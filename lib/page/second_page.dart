@@ -11,8 +11,8 @@ class SecondPage extends StatefulWidget {
 class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(child: Text('Welcomeee')),
+    return const Scaffold(
+      body: Text('Welcomeee'),
     );
   }
 }

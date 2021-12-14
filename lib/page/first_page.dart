@@ -24,7 +24,7 @@ class _FirstPage extends State<FirstPage>  {
           Navigator.pushNamed(context, '/Settings');
         }, icon: const Icon(Icons.account_circle_rounded))
       ],
-          title: Text('Forn_App'), centerTitle: true),
+          title: const Text('Forn_App'), centerTitle: true),
       body: Center(
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),

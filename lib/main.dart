@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:forn_app/page/FirstPage.dart';
+import 'package:forn_app/page/PageTwo.dart';
+import 'package:forn_app/widgets/code/codeDialog.dart';
+import 'package:forn_app/widgets/code/sixCode.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
@@ -17,9 +21,12 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
           ),
           //home: FirstPage(),
-          initialRoute: '/Page1',
+          initialRoute: '/FirstPage',
           routes: {
-            '/Page1': (context) => Page1(),
+            '/FirstPage': (context) => FirstPage(),
+            '/PageTwo': (context) =>PageTwo(),
+            '/sixCode': (context)=>sixCode(),
+            '/codeDialog': (context)=>codeDialog(),
           });
     });
   }

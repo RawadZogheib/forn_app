@@ -22,7 +22,7 @@ class _FirstPage extends State<FirstPage>  {
       appBar: AppBar(actions: <Widget>[
         IconButton(onPressed: (){
           Navigator.pushNamed(context, '/Settings');
-        }, icon: Icon(Icons.ac_unit_outlined))
+        }, icon: Icon(Icons.account_circle_rounded))
       ],
           title: Text('Forn_App'), centerTitle: true),
       body: Center(

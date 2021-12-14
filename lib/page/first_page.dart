@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
@@ -21,7 +19,12 @@ class _FirstPage extends State<FirstPage>  {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(iconTheme: Ic, title: Text('Forn_App'), centerTitle: true),
+      appBar: AppBar(actions: <Widget>[
+        IconButton(onPressed: (){
+          Navigator.pushNamed(context, '/Settings');
+        }, icon: Icon(Icons.ac_unit_outlined))
+      ],
+          title: Text('Forn_App'), centerTitle: true),
       body: Center(
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:forn_app/page/FirstPage.dart';
-import 'package:forn_app/page/PageTwo.dart';
+import 'package:forn_app/page/first_page.dart';
+import 'package:forn_app/page/second_page.dart';
 import 'package:forn_app/widgets/code/codeDialog.dart';
 import 'package:forn_app/widgets/code/sixCode.dart';
 import 'package:sizer/sizer.dart';
@@ -24,9 +24,10 @@ class MyApp extends StatelessWidget {
           initialRoute: '/FirstPage',
           routes: {
             '/FirstPage': (context) => FirstPage(),
-            '/PageTwo': (context) =>PageTwo(),
+            '/PageTwo': (context) =>SecondPage(),
             '/sixCode': (context)=>sixCode(),
             '/codeDialog': (context)=>codeDialog(),
+            '/Settings': (context)=>codeDialog()
           });
     });
   }

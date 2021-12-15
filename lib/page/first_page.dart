@@ -38,6 +38,9 @@ class _FirstPage extends State<FirstPage>  {
                     try {
                       SharedPreferences localStorage = await SharedPreferences.getInstance();
                       if(localStorage.getString('Name') != '' && localStorage.getString('PhoneNb') != '' && localStorage.getString('Location') != ''){
+                        // localStorage.setString('Name', '');
+                        // localStorage.setString('PhoneNb', '');
+                        // localStorage.setString('Location', '');
                         print(localStorage.getString('Name'));
                         print(localStorage.getString('PhoneNb'));
                         print(localStorage.getString('Location'));

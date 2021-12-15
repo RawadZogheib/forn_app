@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forn_app/page/first_page.dart';
 import 'package:forn_app/page/second_page.dart';
+import 'package:forn_app/page/settingsProfile.dart';
 import 'package:forn_app/widgets/code/codeDialog.dart';
 import 'package:forn_app/widgets/code/sixCode.dart';
 import 'package:sizer/sizer.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
             '/PageTwo': (context) =>SecondPage(),
             '/sixCode': (context)=>sixCode(),
             '/codeDialog': (context)=>codeDialog(),
-            '/Settings': (context)=>codeDialog()
+            '/Settings': (context)=>settingsProfile(),
           });
     });
   }

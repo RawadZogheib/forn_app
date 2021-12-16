@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           initialRoute: '/FirstPage',
           routes: {
             '/FirstPage': (context) => FirstPage(),
-            '/PageTwo': (context) =>SecondPage(),
+            '/SecondPage': (context) =>SecondPage(),
             '/sixCode': (context)=>sixCode(),
             '/codeDialog': (context)=>codeDialog(),
             '/Settings': (context)=>settingsProfile(),

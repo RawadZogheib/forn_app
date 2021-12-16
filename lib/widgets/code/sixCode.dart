@@ -106,7 +106,7 @@ class _sixCodeState extends State<sixCode> {
                       padding: const EdgeInsets.all(18.0),
                       child: Container(
                           child: InkWell(
-                            child: btn(btnText: 'Send'),
+                            child: btn(btnText: 'OK'),
                             onTap: (){
                               _check();
                               //_sharedPref();
@@ -132,7 +132,7 @@ class _sixCodeState extends State<sixCode> {
     colErrLoc = globals.transparent;
 
 
-    if(Name != ''){
+    if(Name != '' && Name != null && Name != 'null'){
       setState(() {
         colName = Colors.blue.shade50;
         colName_1 = Colors.blue.shade900;
@@ -149,7 +149,7 @@ class _sixCodeState extends State<sixCode> {
       });
     }
 
-    if(PhoneNb != ''){
+    if(PhoneNb != '' && PhoneNb != null && PhoneNb != ''){
       setState(() {
         colPhone = Colors.blue.shade50;
         colPhone_1 = Colors.blue.shade900;
@@ -166,7 +166,7 @@ class _sixCodeState extends State<sixCode> {
       });
     }
 
-    if(Location != ''){
+    if(Location != '' && Location != null && Location != ''){
       setState(() {
         colLocation = Colors.blue.shade50;
         colLocation_1 = Colors.blue.shade900;
@@ -194,7 +194,7 @@ class _sixCodeState extends State<sixCode> {
       }
       else {
         _sharedPref();
-        Navigator.pushNamed(context, '/PageTwo');
+        Navigator.pushNamed(context, '/SecondPage');
       }
     }
 

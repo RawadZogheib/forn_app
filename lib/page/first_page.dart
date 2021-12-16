@@ -37,14 +37,17 @@ class _FirstPage extends State<FirstPage>  {
                   onTap: () async {
                     try {
                       SharedPreferences localStorage = await SharedPreferences.getInstance();
-                      if(localStorage.getString('Name') != '' && localStorage.getString('PhoneNb') != '' && localStorage.getString('Location') != ''){
+                      print("hello");
+                      if((localStorage.getString('Name').toString()) != 'null' && (localStorage.getString('PhoneNb')) != 'null' && (localStorage.getString('Location')) != 'null'
+                        && localStorage.getString('Name') != null && localStorage.getString('PhoneNb') != null && localStorage.getString('Location') != null
+                          && localStorage.getString('Name') != '' && localStorage.getString('PhoneNb') != '' && localStorage.getString('Location') != ''){
                         // localStorage.setString('Name', '');
                         // localStorage.setString('PhoneNb', '');
                         // localStorage.setString('Location', '');
                         print(localStorage.getString('Name'));
                         print(localStorage.getString('PhoneNb'));
                         print(localStorage.getString('Location'));
-                        Navigator.pushNamed(context, '/PageTwo');
+                        Navigator.pushNamed(context, '/SecondPage');
                       }else{
                         showDialog(
                             context: context,

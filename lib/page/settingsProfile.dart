@@ -66,8 +66,6 @@ class _settingsProfileState extends State<settingsProfile> {
                     colBlue_1: colName_1,
                     colBlue_2: colName_2,
                     onChange: (value) async {
-                      SharedPreferences localStorage = await SharedPreferences.getInstance();
-                      print(localStorage.getString('Name'));
                       Name = value;
                     },),
 

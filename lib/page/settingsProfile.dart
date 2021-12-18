@@ -48,7 +48,7 @@ class _settingsProfileState extends State<settingsProfile> {
             padding: EdgeInsets.only(top: 18.0),
             child: Column(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(bottom: 28.0),
                   child: Text(
                     "Change your Informations",
@@ -100,7 +100,11 @@ class _settingsProfileState extends State<settingsProfile> {
                   padding: const EdgeInsets.all(18.0),
                   child: Container(
                       child: InkWell(
-                    child: btn(btnText: 'OK'),
+                    child: btn(
+                      btnText: 'OK',
+                      height: 50,
+                      width: 100,
+                    ),
                     onTap: () {
                       _check();
                       //_sharedPref();

@@ -1,32 +1,30 @@
-
-
-import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:flutter/material.dart';
-
+import 'package:forn_app/globals/globals.dart' as globals;
 
 class btn extends StatelessWidget {
   var btnText;
+  double? height;
+  double? width;
   var onTap;
-  btn({required this.btnText});
+
+  btn({required this.btnText, required this.height, required this.width});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Text(btnText),
-      ),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(9.0),
-        color: Colors.blue.shade200,
-      )
-    );
+        height: height,
+        width: width,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Text(btnText),
+        ),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(9.0),
+          color: Colors.blue.shade200,
+        ));
   }
 }
-
-
 
 class myButton extends StatelessWidget {
   var btnText;
@@ -55,4 +53,3 @@ class myButton extends StatelessWidget {
     );
   }
 }
-

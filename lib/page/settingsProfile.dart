@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,9 +6,7 @@ import '../widgets/button/myButton.dart';
 import '../widgets/textInput/myErrorText.dart';
 import '../widgets/textInput/myTextInput.dart';
 
-RegExp phoneExp = new RegExp(
-    r"[0-9]{8}\b");
-
+RegExp phoneExp = new RegExp(r"[0-9]{8}\b");
 
 class settingsProfile extends StatefulWidget {
   const settingsProfile({Key? key}) : super(key: key);
@@ -20,7 +16,6 @@ class settingsProfile extends StatefulWidget {
 }
 
 class _settingsProfileState extends State<settingsProfile> {
-
   String errName = '';
   Color colErrName = globals.transparent;
   String errPhone = '';
@@ -40,81 +35,90 @@ class _settingsProfileState extends State<settingsProfile> {
   Color colLocation_1 = globals.blue_1;
   Color colLocation_2 = globals.blue_2;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Profile'),
-      centerTitle: true,
+      appBar: AppBar(
+        title: Text('Profile'),
+        centerTitle: true,
       ),
-
       body: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 18.0),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 28.0),
-                    child: Text("Change your Informations",style: TextStyle(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 18.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 28.0),
+                  child: Text(
+                    "Change your Informations",
+                    style: TextStyle(
                       color: Colors.blueAccent,
-                    ),),
+                    ),
                   ),
-                  myTextInput(textString: 'Enter your Name', labelText: 'Enter your Name',
-                    spaceAllowed: false, obscure: false,
-                    colBlue: colName,
-                    colBlue_1: colName_1,
-                    colBlue_2: colName_2,
-                    onChange: (value) async {
-                      Name = value;
-                    },),
-
-                  myErrorText(errorText: errName, color: colErrName),
-
-                  myTextInput(textString: 'PhoneNumber', labelText: 'PhoneNumber',
-                    spaceAllowed: false, obscure: false,
-                    colBlue: colPhone,
-                    colBlue_1: colPhone_1,
-                    colBlue_2: colPhone_2,
-                    onChange: (value){
-                      PhoneNb = value;
-                    },),
-
-                  myErrorText(errorText: errPhone, color: colErrPhone),
-
-                  myTextInput(textString: 'Your Location', labelText: 'Your Location',
-                    spaceAllowed: false, obscure: false,
-                    colBlue: colLocation,
-                    colBlue_1: colLocation_1,
-                    colBlue_2: colLocation_2,
-                    onChange: (value){
-                      Location = value;
-                    },),
-
-                  myErrorText(errorText: errLoc, color: colErrLoc),
-
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Container(
-                        child: InkWell(
-                          child: btn(btnText: 'OK'),
-                          onTap: (){
-                            _check();
-                            //_sharedPref();
-                            //Navigator.pushNamed(context, '/FirstPage');
-                            //print(globals.sixCodeNb);
-                            //_checkCode();
-                          },
-                        )),
-                  ),
-                ],
-              ),
-            )],
+                ),
+                myTextInput(
+                  textString: 'Enter your Name',
+                  labelText: 'Enter your Name',
+                  spaceAllowed: false,
+                  obscure: false,
+                  colBlue: colName,
+                  colBlue_1: colName_1,
+                  colBlue_2: colName_2,
+                  onChange: (value) async {
+                    Name = value;
+                  },
+                ),
+                myErrorText(errorText: errName, color: colErrName),
+                myTextInput(
+                  textString: 'PhoneNumber',
+                  labelText: 'PhoneNumber',
+                  spaceAllowed: false,
+                  obscure: false,
+                  colBlue: colPhone,
+                  colBlue_1: colPhone_1,
+                  colBlue_2: colPhone_2,
+                  onChange: (value) {
+                    PhoneNb = value;
+                  },
+                ),
+                myErrorText(errorText: errPhone, color: colErrPhone),
+                myTextInput(
+                  textString: 'Your Location',
+                  labelText: 'Your Location',
+                  spaceAllowed: false,
+                  obscure: false,
+                  colBlue: colLocation,
+                  colBlue_1: colLocation_1,
+                  colBlue_2: colLocation_2,
+                  onChange: (value) {
+                    Location = value;
+                  },
+                ),
+                myErrorText(errorText: errLoc, color: colErrLoc),
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Container(
+                      child: InkWell(
+                    child: btn(btnText: 'OK'),
+                    onTap: () {
+                      _check();
+                      //_sharedPref();
+                      //Navigator.pushNamed(context, '/FirstPage');
+                      //print(globals.sixCodeNb);
+                      //_checkCode();
+                    },
+                  )),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
 
-  _check(){
+  _check() {
     bool isEmpty = false;
 
     errName = '';
@@ -124,14 +128,13 @@ class _settingsProfileState extends State<settingsProfile> {
     errLoc = '';
     colErrLoc = globals.transparent;
 
-
-    if(Name != '' && Name != null && Name != 'null'){
+    if (Name != '' && Name != null && Name != 'null') {
       setState(() {
         colName = Colors.blue.shade50;
         colName_1 = Colors.blue.shade900;
         colName_2 = Colors.blue.shade900.withOpacity(0.5);
       });
-    }else{
+    } else {
       isEmpty = true;
       setState(() {
         colName = Colors.red.shade50;
@@ -142,13 +145,13 @@ class _settingsProfileState extends State<settingsProfile> {
       });
     }
 
-    if(PhoneNb != '' && PhoneNb != null && PhoneNb != ''){
+    if (PhoneNb != '' && PhoneNb != null && PhoneNb != '') {
       setState(() {
         colPhone = Colors.blue.shade50;
         colPhone_1 = Colors.blue.shade900;
         colPhone_2 = Colors.blue.shade900.withOpacity(0.5);
       });
-    }else{
+    } else {
       isEmpty = true;
       setState(() {
         colPhone = Colors.red.shade50;
@@ -159,13 +162,13 @@ class _settingsProfileState extends State<settingsProfile> {
       });
     }
 
-    if(Location != '' && Location != null && Location != ''){
+    if (Location != '' && Location != null && Location != '') {
       setState(() {
         colLocation = Colors.blue.shade50;
         colLocation_1 = Colors.blue.shade900;
         colLocation_2 = Colors.blue.shade900.withOpacity(0.5);
       });
-    }else{
+    } else {
       setState(() {
         colLocation = Colors.red.shade50;
         colLocation_1 = Colors.red.shade900;
@@ -175,8 +178,8 @@ class _settingsProfileState extends State<settingsProfile> {
       });
     }
 
-    if(isEmpty == false){
-      if(!phoneExp.hasMatch(PhoneNb)){
+    if (isEmpty == false) {
+      if (!phoneExp.hasMatch(PhoneNb)) {
         setState(() {
           colPhone = globals.red;
           colPhone_1 = globals.red_1;
@@ -184,17 +187,12 @@ class _settingsProfileState extends State<settingsProfile> {
           colErrPhone = globals.red_1;
           errPhone = "It's not a phoneNumber format, it must contain 8 numbers";
         });
-      }
-      else {
+      } else {
         _sharedPref();
-        Navigator.pushNamed(context, '/FirstPage');
+        Navigator.pop(context);
       }
     }
-
   }
-
-
-
 
   _sharedPref() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();

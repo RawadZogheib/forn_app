@@ -58,10 +58,9 @@ class _sixCodeState extends State<sixCode> {
             child: Text(
               "Insert the following fields",
               style: TextStyle(
-                color: Colors.amber,
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-              ),
+                  color: Colors.amber,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
             ),
           ),
           const SizedBox(
@@ -126,16 +125,17 @@ class _sixCodeState extends State<sixCode> {
           ),
           InkWell(
             child: btn(
-          btnText: 'OK',
-          height: 50,
-          width: 100,
+              btnText: 'OK',
+              height: 50,
+              width: 100,
             ),
             onTap: () {
-          _check();
-          //_sharedPref();
-          //Navigator.pushNamed(context, '/FirstPage');
-          //print(globals.sixCodeNb);
-          //_checkCode();
+              Navigator.pop(context);
+              _check();
+              //_sharedPref();
+              //Navigator.pushNamed(context, '/FirstPage');
+              //print(globals.sixCodeNb);
+              //_checkCode();
             },
           ),
         ],

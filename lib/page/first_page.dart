@@ -114,10 +114,10 @@ class _FirstPage extends State<FirstPage> {
                             height: 150,
                             width: 150,
                             onPress: () async {
-                              SharedPreferences localStorage =
-                                  await SharedPreferences.getInstance();
-                              localStorage.clear();
-                              print("cleaned");
+                              // SharedPreferences localStorage =
+                              //     await SharedPreferences.getInstance();
+                              // localStorage.clear();
+                              // print("cleaned");
                               myToast.showToast('There is no prices yet',
                                   const Icon(Icons.alarm));
                             },

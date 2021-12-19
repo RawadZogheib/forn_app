@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forn_app/page/first_page.dart';
-import 'package:forn_app/page/second_page.dart';
+import 'package:forn_app/page/order_page.dart';
 import 'package:forn_app/page/settingsProfile.dart';
 import 'package:forn_app/widgets/code/codeDialog.dart';
 import 'package:forn_app/widgets/code/sixCode.dart';
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp(
-          title: 'Forn_App',
+          title: 'صاج الدنيه منقوشه',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           initialRoute: '/FirstPage',
           routes: {
             '/FirstPage': (context) => FirstPage(),
-            '/SecondPage': (context) =>SecondPage(),
+            '/SecondPage': (context) =>OrderPage(),
             '/sixCode': (context)=>sixCode(),
             '/codeDialog': (context)=>codeDialog(),
             '/Settings': (context)=>settingsProfile(),

@@ -39,9 +39,10 @@ class _settingsProfileState extends State<settingsProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Settings'),
         centerTitle: true,
       ),
+      backgroundColor: globals.whiteBlue,
       body: Column(
         children: [
           Padding(

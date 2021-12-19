@@ -14,9 +14,17 @@ class btn extends StatelessWidget {
     return Container(
         height: height,
         width: width,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Text(btnText),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            btnText == 'Order' ? const Icon(Icons.upload, size: 40,) : Container(),
+            btnText == 'Galery' ? const Icon(Icons.photo, size: 40,) : Container(),
+            btnText == 'Menu' ? const Icon(Icons.book, size: 40,) : Container(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(btnText,style: const TextStyle(fontWeight: FontWeight.bold),),
+            ),
+          ],
         ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
@@ -28,24 +36,34 @@ class btn extends StatelessWidget {
 
 class myButton extends StatelessWidget {
   var btnText;
-  var height;
-  var width;
+  double height;
+  double width;
   var onPress;
 
-  myButton({required this.btnText, this.height, this.width, this.onPress});
+  myButton({required this.btnText, required this.height, required this.width, this.onPress});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: globals.blue,
+        primary: Colors.blue.shade200,
         onPrimary: globals.blue_1,
         shadowColor: Colors.transparent,
-        onSurface: Colors.orange,
-        fixedSize: Size(50, 40),
+        fixedSize: Size(height, width),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       ),
-      child: Text(btnText),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            btnText == 'Order' ? const Icon(Icons.upload, size: 40,) : Container(),
+            btnText == 'Gallery' ? const Icon(Icons.photo, size: 40,) : Container(),
+            btnText == 'Menu' ? const Icon(Icons.book, size: 40,) : Container(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(btnText,style: const TextStyle(fontWeight: FontWeight.bold),),
+            ),
+          ],
+        ),
       onPressed: () {
         onPress();
         //print("Submitted2");

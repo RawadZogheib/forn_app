@@ -109,6 +109,8 @@ class _settingsProfileState extends State<settingsProfile> {
                               colBlue: colPhone,
                               colBlue_1: colPhone_1,
                               colBlue_2: colPhone_2,
+                              keybType: const TextInputType.numberWithOptions(decimal: true),
+                              maxLength: 8,
                               onChange: (value) {
                                 PhoneNb = value;
                               },
@@ -219,6 +221,7 @@ class _settingsProfileState extends State<settingsProfile> {
         colLocation_2 = Colors.amber.shade900.withOpacity(0.5);
       });
     } else {
+      isEmpty = true;
       setState(() {
         colLocation = Colors.red.shade50;
         colLocation_1 = Colors.red.shade900;

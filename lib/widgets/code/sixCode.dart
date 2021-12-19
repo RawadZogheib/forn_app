@@ -5,7 +5,7 @@ import 'package:forn_app/widgets/textInput/myErrorText.dart';
 import 'package:forn_app/widgets/textInput/myTextInput.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-RegExp phoneExp = new RegExp(r"[0-9]{8}\b"); //lebanon
+RegExp phoneExp = new RegExp(r"[0-9]{8}\b");
 
 // String errCode = '';
 // Color colErrCode = globals.transparent;
@@ -93,6 +93,8 @@ class _sixCodeState extends State<sixCode> {
             colBlue: colPhone,
             colBlue_1: colPhone_1,
             colBlue_2: colPhone_2,
+            keybType: const TextInputType.numberWithOptions(decimal: true),
+            maxLength: 8,
             onChange: (value) {
               PhoneNb = value;
             },
@@ -130,7 +132,7 @@ class _sixCodeState extends State<sixCode> {
               width: 100,
             ),
             onTap: () {
-              Navigator.pop(context);
+              //Navigator.pop(context);
               _check();
               //_sharedPref();
               //Navigator.pushNamed(context, '/FirstPage');
@@ -194,6 +196,7 @@ class _sixCodeState extends State<sixCode> {
         colLocation_2 = Colors.amber.shade900.withOpacity(0.5);
       });
     } else {
+      isEmpty = true;
       setState(() {
         colLocation = Colors.red.shade50;
         colLocation_1 = Colors.red.shade900;
@@ -204,16 +207,17 @@ class _sixCodeState extends State<sixCode> {
     }
 
     if (isEmpty == false) {
-      if (!phoneExp.hasMatch(PhoneNb)) {
+      if(!phoneExp.hasMatch(PhoneNb)){
         setState(() {
           colPhone = globals.red;
           colPhone_1 = globals.red_1;
           colPhone_2 = globals.red_2;
           colErrPhone = globals.red_1;
-          errPhone = globals.error400;
+          errPhone = "It's not a phoneNumber format, it must contain 8 numbers";
         });
-      } else {
+      }else {
         _sharedPref();
+        Navigator.pop(context);
         Navigator.pushNamed(context, '/SecondPage');
       }
     }

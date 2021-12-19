@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.amber,
-            highlightColor: Colors.amber.shade300,
+            //highlightColor: Colors.amber.shade300,
           ),
           //home: FirstPage(),
-          initialRoute: '/FirstPage',
+          initialRoute: '/SplashPage',
           routes: {
             '/SplashPage': (context) => SplashPage(),
             '/FirstPage': (context) => FirstPage(),

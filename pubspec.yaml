@@ -78,6 +78,7 @@ flutter:
     - Assets/img/img (11).jpg
     - Assets/img/img (12).jpg
     - Assets/img/KwikCodeLogoPhone.png
+    - Assets/img/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

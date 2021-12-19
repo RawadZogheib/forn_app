@@ -1,27 +1,72 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
+import 'package:url_launcher/url_launcher.dart';
 
 class SplashPage extends StatefulWidget {
   @override
   _SplashPage createState() => _SplashPage();
 }
 
-class _SplashPage extends State<SplashPage>  {
+class _SplashPage extends State<SplashPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _timer();
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    _timer();
-
     return Scaffold(
       backgroundColor: globals.whiteBlue,
-      body: const Image(
-        image: AssetImage('Assets/firstPageLogo/image1.gif'),
-        fit: BoxFit.cover,
-        height: double.infinity,
-        width: double.infinity,
-        alignment: Alignment.center,
+      body: Column(
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Image(
+                  height: 350,
+                  width: 350,
+                  image: AssetImage('Assets/img/logo.png'),
+                ),
+              ],
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                onTap: () {
+                  _launchURL();
+                },
+                child: Container(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Text(
+                        'Sponsored by',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'Raleway',
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Image(
+                        height: 100,
+                        width: 100,
+                        image: AssetImage('Assets/img/KwikCodeLogoPhone.png'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
@@ -29,45 +74,18 @@ class _SplashPage extends State<SplashPage>  {
   _timer() async {
     try {
       Future.delayed(const Duration(seconds: 3), () {
-        Navigator.pushNamedAndRemoveUntil(context, '/FirstPage', (route) => false);
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/FirstPage', (route) => false);
       });
     } catch (e) {
       print(e);
     }
   }
+
+  _launchURL() async {
+    if (!await launch(globals.url)) throw 'Could not launch ${globals.url}';
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //
 //

@@ -51,83 +51,94 @@ class _sixCodeState extends State<sixCode> {
   Widget build(BuildContext context) {
     return Container(
         child: Column(children: [
-      Padding(
-        padding: EdgeInsets.only(top: 18.0),
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 28.0),
-              child: Text(
-                "Insert the following fields",
-                style: TextStyle(
-                  color: Colors.amber,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold
-                ),
+      Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(bottom: 28.0),
+            child: Text(
+              "Insert the following fields",
+              style: TextStyle(
+                color: Colors.amber,
+                fontSize: 20,
+                fontWeight: FontWeight.bold
               ),
             ),
-            SizedBox(
-              height: 10,
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          myTextInput(
+            textString: 'Enter your Name',
+            labelText: 'Enter your Name',
+            spaceAllowed: false,
+            obscure: false,
+            colBlue: colName,
+            colBlue_1: colName_1,
+            colBlue_2: colName_2,
+            onChange: (value) {
+              Name = value;
+            },
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          myErrorText(errorText: errName, color: colErrName),
+          const SizedBox(
+            height: 5,
+          ),
+          myTextInput(
+            textString: 'PhoneNumber',
+            labelText: 'PhoneNumber',
+            spaceAllowed: false,
+            obscure: false,
+            colBlue: colPhone,
+            colBlue_1: colPhone_1,
+            colBlue_2: colPhone_2,
+            onChange: (value) {
+              PhoneNb = value;
+            },
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          myErrorText(errorText: errPhone, color: colErrPhone),
+          const SizedBox(
+            height: 5,
+          ),
+          myTextInput(
+            textString: 'Your Location',
+            labelText: 'Your Location',
+            spaceAllowed: false,
+            obscure: false,
+            colBlue: colLocation,
+            colBlue_1: colLocation_1,
+            colBlue_2: colLocation_2,
+            onChange: (value) {
+              Location = value;
+            },
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          myErrorText(errorText: errLoc, color: colErrLoc),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            child: btn(
+          btnText: 'OK',
+          height: 50,
+          width: 100,
             ),
-            myTextInput(
-              textString: 'Enter your Name',
-              labelText: 'Enter your Name',
-              spaceAllowed: false,
-              obscure: false,
-              colBlue: colName,
-              colBlue_1: colName_1,
-              colBlue_2: colName_2,
-              onChange: (value) {
-                Name = value;
-              },
-            ),
-            myErrorText(errorText: errName, color: colErrName),
-            myTextInput(
-              textString: 'PhoneNumber',
-              labelText: 'PhoneNumber',
-              spaceAllowed: false,
-              obscure: false,
-              colBlue: colPhone,
-              colBlue_1: colPhone_1,
-              colBlue_2: colPhone_2,
-              onChange: (value) {
-                PhoneNb = value;
-              },
-            ),
-            myErrorText(errorText: errPhone, color: colErrPhone),
-            myTextInput(
-              textString: 'Your Location',
-              labelText: 'Your Location',
-              spaceAllowed: false,
-              obscure: false,
-              colBlue: colLocation,
-              colBlue_1: colLocation_1,
-              colBlue_2: colLocation_2,
-              onChange: (value) {
-                Location = value;
-              },
-            ),
-            myErrorText(errorText: errLoc, color: colErrLoc),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Container(
-                  child: InkWell(
-                child: btn(
-                  btnText: 'OK',
-                  height: 50,
-                  width: 100,
-                ),
-                onTap: () {
-                  _check();
-                  //_sharedPref();
-                  //Navigator.pushNamed(context, '/FirstPage');
-                  //print(globals.sixCodeNb);
-                  //_checkCode();
-                },
-              )),
-            ),
-          ],
-        ),
+            onTap: () {
+          _check();
+          //_sharedPref();
+          //Navigator.pushNamed(context, '/FirstPage');
+          //print(globals.sixCodeNb);
+          //_checkCode();
+            },
+          ),
+        ],
       )
     ]));
   }
@@ -144,9 +155,9 @@ class _sixCodeState extends State<sixCode> {
 
     if (Name != '' && Name != null && Name != 'null') {
       setState(() {
-        colName = Colors.blue.shade50;
-        colName_1 = Colors.blue.shade900;
-        colName_2 = Colors.blue.shade900.withOpacity(0.5);
+        colName = Colors.amber.shade50;
+        colName_1 = Colors.amber.shade900;
+        colName_2 = Colors.amber.shade900.withOpacity(0.5);
       });
     } else {
       isEmpty = true;
@@ -154,16 +165,16 @@ class _sixCodeState extends State<sixCode> {
         colName = Colors.red.shade50;
         colName_1 = Colors.red.shade900;
         colName_2 = Colors.red.shade900.withOpacity(0.5);
-        errName = 'Field is Empty';
+        errName = globals.error7;
         colErrName = globals.red_1;
       });
     }
 
     if (PhoneNb != '' && PhoneNb != null && PhoneNb != '') {
       setState(() {
-        colPhone = Colors.blue.shade50;
-        colPhone_1 = Colors.blue.shade900;
-        colPhone_2 = Colors.blue.shade900.withOpacity(0.5);
+        colPhone = Colors.amber.shade50;
+        colPhone_1 = Colors.amber.shade900;
+        colPhone_2 = Colors.amber.shade900.withOpacity(0.5);
       });
     } else {
       isEmpty = true;
@@ -171,23 +182,23 @@ class _sixCodeState extends State<sixCode> {
         colPhone = Colors.red.shade50;
         colPhone_1 = Colors.red.shade900;
         colPhone_2 = Colors.red.shade900.withOpacity(0.5);
-        errPhone = 'Field is Empty';
+        errPhone = globals.error7;
         colErrPhone = globals.red_1;
       });
     }
 
     if (Location != '' && Location != null && Location != '') {
       setState(() {
-        colLocation = Colors.blue.shade50;
-        colLocation_1 = Colors.blue.shade900;
-        colLocation_2 = Colors.blue.shade900.withOpacity(0.5);
+        colLocation = Colors.amber.shade50;
+        colLocation_1 = Colors.amber.shade900;
+        colLocation_2 = Colors.amber.shade900.withOpacity(0.5);
       });
     } else {
       setState(() {
         colLocation = Colors.red.shade50;
         colLocation_1 = Colors.red.shade900;
         colLocation_2 = Colors.red.shade900.withOpacity(0.5);
-        errLoc = 'Field is Empty';
+        errLoc = globals.error7;
         colErrLoc = globals.red_1;
       });
     }
@@ -199,7 +210,7 @@ class _sixCodeState extends State<sixCode> {
           colPhone_1 = globals.red_1;
           colPhone_2 = globals.red_2;
           colErrPhone = globals.red_1;
-          errPhone = "It's not a phoneNumber format, it must contain 8 numbers";
+          errPhone = globals.error400;
         });
       } else {
         _sharedPref();

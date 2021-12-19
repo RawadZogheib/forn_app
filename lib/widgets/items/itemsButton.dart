@@ -26,7 +26,7 @@ class _ItemsButtonState extends State<ItemsButton> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(
-            width: 65,
+            width: 30,
           ),
           Row(
             children: [
@@ -82,11 +82,15 @@ class _ItemsButtonState extends State<ItemsButton> {
             ],
           ),
           const SizedBox(
-            width: 65,
+            width: 35,
           ),
-          Text(
-            widget.itemName,
-            style: const TextStyle(fontSize: 18),
+          Container(
+            width: 120,
+            alignment: Alignment.center,
+            child: Text(
+              widget.itemName,
+              style: const TextStyle(fontSize: 18),
+            ),
           ),
         ],
       ),

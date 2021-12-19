@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:forn_app/page/aboutUs_page.dart';
 import 'package:forn_app/page/first_page.dart';
+import 'package:forn_app/page/gallery_page.dart';
 import 'package:forn_app/page/order_page.dart';
 import 'package:forn_app/page/settingsProfile.dart';
 import 'package:forn_app/widgets/code/codeDialog.dart';
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
           title: 'صاج الدنيه منقوشه',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.amber,
+            highlightColor: Colors.amber.shade300,
           ),
           //home: FirstPage(),
           initialRoute: '/FirstPage',
@@ -29,6 +32,8 @@ class MyApp extends StatelessWidget {
             '/sixCode': (context)=>sixCode(),
             '/codeDialog': (context)=>codeDialog(),
             '/Settings': (context)=>settingsProfile(),
+            '/AboutUs': (context)=>AboutUs(),
+            '/GalleryPage': (context)=>GalleryPage(),
           });
     });
   }

@@ -1,10 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:forn_app/widgets/button/myButton.dart';
 import 'package:forn_app/widgets/code/codeDialog.dart';
+import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
 import 'package:forn_app/widgets/other/errorAlertDialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,136 +14,127 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPage extends State<FirstPage> {
-  late FToast fToast;
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    fToast = FToast();
-    fToast.init(context);
+    globals.fToast = FToast();
+    globals.fToast.init(context);
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        appBar: AppBar(actions: <Widget>[
+        appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: Colors.white,
+          ),
+          actions: <Widget>[
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/Settings');
               },
               icon: const Icon(Icons.settings))
-        ], centerTitle: true),
-        backgroundColor: globals.whiteBlue,
+        ], centerTitle: true,elevation: 0,),
+        backgroundColor: Colors.amber,
         body: Center(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  height: 50,
-                  width: 300.0,
-                  alignment: Alignment.center,
-                  child: DefaultTextStyle(
-                    style: const TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    child: AnimatedTextKit(
-                      animatedTexts: [
-                        TypewriterAnimatedText('صاج الدنيه منقوشه'),
-                      ],
-                      repeatForever: true,
-                      pause: const Duration(seconds: 10),
-                      onTap: () {
-                        print("Tap Event");
-                      },
-                    ),
+              const SizedBox(
+                height: 0,
+              ),
+              Container(
+                height: 40,
+                alignment: Alignment.center,
+                margin: const EdgeInsets.only(left: 25),
+                child: DefaultTextStyle(
+                  style: const TextStyle(
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  child: AnimatedTextKit(
+                    animatedTexts: [
+                      TypewriterAnimatedText('صاج الدنيه منقوشه'),
+                    ],
+                    repeatForever: true,
+                    pause: const Duration(seconds: 7),
+                    // onTap: () {
+                    //   print("Tap Event");
+                    // },
                   ),
                 ),
               ),
-              Wrap(
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: myButton(
-                        btnText: 'Order',
-                        height: 150,
-                        width: 150,
-                        onPress: () {
-                          orderMethod();
-                        },
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: myButton(
-                        btnText: 'Gallery',
-                        height: 150,
-                        width: 150,
-                        onPress: (){
-                          _showToast('Coming soon', const Icon(Icons.alarm));
-                          // SharedPreferences localStorage = await SharedPreferences.getInstance();
-                          // localStorage.clear();
-                          // print("cleaned");
-                        },
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: myButton(
-                        btnText: 'Menu',
-                        height: 150,
-                        width: 150,
-                        onPress: () {
-                          _showToast('Coming soon', const Icon(Icons.alarm));
-                        },
-                      )),
-                ],
+              const SizedBox(
+                height: 40,
+              ),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 30,
+                  ),
+                  decoration: BoxDecoration(
+                    color: globals.whiteBlue,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Wrap(
+                    children: [
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: MyButton(
+                            btnText: 'Order',
+                            height: 150,
+                            width: 150,
+                            onPress: () {
+                              orderMethod();
+                            },
+                          )),
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: MyButton(
+                            btnText: 'Gallery',
+                            height: 150,
+                            width: 150,
+                            onPress: () {
+                              Navigator.pushNamed(context, '/GalleryPage');
+                            },
+                          )),
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: MyButton(
+                            btnText: 'Menu',
+                            height: 150,
+                            width: 150,
+                            onPress: () async {
+                              SharedPreferences localStorage = await SharedPreferences.getInstance();
+                              localStorage.clear();
+                              print("cleaned");
+                              myToast.showToast('There is no prices yet',
+                                  const Icon(Icons.alarm));
+                            },
+                          )),
+                      Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: MyButton(
+                            btnText: 'About Us',
+                            height: 150,
+                            width: 150,
+                            onPress: () {
+                              Navigator.pushNamed(context, '/AboutUs');
+                            },
+                          )),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
         ));
-  }
-
-
-  _showToast(String toastMsg, Icon icon) {
-    Widget toast = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.0),
-        color: Colors.blue.shade100,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          icon,
-          const SizedBox(
-            width: 12.0,
-          ),
-          Text(toastMsg),
-        ],
-      ),
-    );
-
-
-    fToast.showToast(
-      child: toast,
-      gravity: ToastGravity.BOTTOM,
-      toastDuration: const Duration(seconds: 2),
-    );
-
-    // // Custom Toast Position
-    // fToast.showToast(
-    //     child: toast,
-    //     toastDuration: Duration(seconds: 2),
-    //     positionedToastBuilder: (context, child) {
-    //       return Positioned(
-    //         child: child,
-    //         top: 16.0,
-    //         left: 16.0,
-    //       );
-    //     });
   }
 
   void orderMethod() async {

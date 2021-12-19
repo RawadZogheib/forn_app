@@ -55,14 +55,19 @@ class _sixCodeState extends State<sixCode> {
         padding: EdgeInsets.only(top: 18.0),
         child: Column(
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(bottom: 28.0),
               child: Text(
-                "Enter the following steps",
+                "Insert the following fields",
                 style: TextStyle(
-                  color: Colors.blueAccent,
+                  color: Colors.amber,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
                 ),
               ),
+            ),
+            SizedBox(
+              height: 10,
             ),
             myTextInput(
               textString: 'Enter your Name',

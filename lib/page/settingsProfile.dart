@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../widgets/button/myButton.dart';
 import '../widgets/textInput/myErrorText.dart';
 import '../widgets/textInput/myTextInput.dart';
@@ -39,85 +38,131 @@ class _settingsProfileState extends State<settingsProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
         centerTitle: true,
+        elevation: 0,
       ),
-      backgroundColor: globals.whiteBlue,
+      backgroundColor: Colors.amber,
       body: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 18.0),
-            child: Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 28.0),
-                  child: Text(
-                    "Change your Informations",
-                    style: TextStyle(
-                      color: Colors.blueAccent,
-                    ),
-                  ),
-                ),
-                myTextInput(
-                  textString: 'Enter your Name',
-                  labelText: 'Enter your Name',
-                  spaceAllowed: false,
-                  obscure: false,
-                  colBlue: colName,
-                  colBlue_1: colName_1,
-                  colBlue_2: colName_2,
-                  onChange: (value) async {
-                    Name = value;
-                  },
-                ),
-                myErrorText(errorText: errName, color: colErrName),
-                myTextInput(
-                  textString: 'PhoneNumber',
-                  labelText: 'PhoneNumber',
-                  spaceAllowed: false,
-                  obscure: false,
-                  colBlue: colPhone,
-                  colBlue_1: colPhone_1,
-                  colBlue_2: colPhone_2,
-                  onChange: (value) {
-                    PhoneNb = value;
-                  },
-                ),
-                myErrorText(errorText: errPhone, color: colErrPhone),
-                myTextInput(
-                  textString: 'Your Location',
-                  labelText: 'Your Location',
-                  spaceAllowed: false,
-                  obscure: false,
-                  colBlue: colLocation,
-                  colBlue_1: colLocation_1,
-                  colBlue_2: colLocation_2,
-                  onChange: (value) {
-                    Location = value;
-                  },
-                ),
-                myErrorText(errorText: errLoc, color: colErrLoc),
-                Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Container(
-                      child: InkWell(
-                    child: btn(
-                      btnText: 'OK',
-                      height: 50,
-                      width: 100,
-                    ),
-                    onTap: () {
-                      _check();
-                      //_sharedPref();
-                      //Navigator.pushNamed(context, '/FirstPage');
-                      //print(globals.sixCodeNb);
-                      //_checkCode();
-                    },
-                  )),
-                ),
-              ],
+          const SizedBox(
+            height: 10,
+          ),
+          const Text(
+            'Settings',
+            style: TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
             ),
-          )
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 35,
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20,
+              ),
+              decoration: BoxDecoration(
+                color: globals.whiteBlue,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              child: Wrap(
+                children: [
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            myTextInput(
+                              textString: 'Enter your Name',
+                              labelText: 'Enter your Name',
+                              spaceAllowed: true,
+                              obscure: false,
+                              colBlue: colName,
+                              colBlue_1: colName_1,
+                              colBlue_2: colName_2,
+                              onChange: (value) async {
+                                Name = value;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            myErrorText(errorText: errName, color: colErrName),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            myTextInput(
+                              textString: 'PhoneNumber',
+                              labelText: 'PhoneNumber',
+                              spaceAllowed: true,
+                              obscure: false,
+                              colBlue: colPhone,
+                              colBlue_1: colPhone_1,
+                              colBlue_2: colPhone_2,
+                              onChange: (value) {
+                                PhoneNb = value;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            myErrorText(errorText: errPhone, color: colErrPhone),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            myTextInput(
+                              textString: 'Your Location',
+                              labelText: 'Your Location',
+                              spaceAllowed: true,
+                              obscure: false,
+                              colBlue: colLocation,
+                              colBlue_1: colLocation_1,
+                              colBlue_2: colLocation_2,
+                              onChange: (value) {
+                                Location = value;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            myErrorText(errorText: errLoc, color: colErrLoc),
+                            Padding(
+                              padding: const EdgeInsets.all(18.0),
+                              child: Container(
+                                  child: InkWell(
+                                child: btn(
+                                  btnText: 'OK',
+                                  height: 50,
+                                  width: 100,
+                                ),
+                                onTap: () {
+                                  _check();
+                                  //_sharedPref();
+                                  //Navigator.pushNamed(context, '/FirstPage');
+                                  //print(globals.sixCodeNb);
+                                  //_checkCode();
+                                },
+                              )),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -135,9 +180,9 @@ class _settingsProfileState extends State<settingsProfile> {
 
     if (Name != '' && Name != null && Name != 'null') {
       setState(() {
-        colName = Colors.blue.shade50;
-        colName_1 = Colors.blue.shade900;
-        colName_2 = Colors.blue.shade900.withOpacity(0.5);
+        colName = Colors.amber.shade50;
+        colName_1 = Colors.amber.shade900;
+        colName_2 = Colors.amber.shade900.withOpacity(0.5);
       });
     } else {
       isEmpty = true;
@@ -145,16 +190,16 @@ class _settingsProfileState extends State<settingsProfile> {
         colName = Colors.red.shade50;
         colName_1 = Colors.red.shade900;
         colName_2 = Colors.red.shade900.withOpacity(0.5);
-        errName = 'Field is Empty';
+        errName = globals.error7;
         colErrName = globals.red_1;
       });
     }
 
     if (PhoneNb != '' && PhoneNb != null && PhoneNb != '') {
       setState(() {
-        colPhone = Colors.blue.shade50;
-        colPhone_1 = Colors.blue.shade900;
-        colPhone_2 = Colors.blue.shade900.withOpacity(0.5);
+        colPhone = Colors.amber.shade50;
+        colPhone_1 = Colors.amber.shade900;
+        colPhone_2 = Colors.amber.shade900.withOpacity(0.5);
       });
     } else {
       isEmpty = true;
@@ -162,23 +207,23 @@ class _settingsProfileState extends State<settingsProfile> {
         colPhone = Colors.red.shade50;
         colPhone_1 = Colors.red.shade900;
         colPhone_2 = Colors.red.shade900.withOpacity(0.5);
-        errPhone = 'Field is Empty';
+        errPhone = globals.error7;
         colErrPhone = globals.red_1;
       });
     }
 
     if (Location != '' && Location != null && Location != '') {
       setState(() {
-        colLocation = Colors.blue.shade50;
-        colLocation_1 = Colors.blue.shade900;
-        colLocation_2 = Colors.blue.shade900.withOpacity(0.5);
+        colLocation = Colors.amber.shade50;
+        colLocation_1 = Colors.amber.shade900;
+        colLocation_2 = Colors.amber.shade900.withOpacity(0.5);
       });
     } else {
       setState(() {
         colLocation = Colors.red.shade50;
         colLocation_1 = Colors.red.shade900;
         colLocation_2 = Colors.red.shade900.withOpacity(0.5);
-        errLoc = 'Field is Empty';
+        errLoc = globals.error7;
         colErrLoc = globals.red_1;
       });
     }
@@ -190,7 +235,7 @@ class _settingsProfileState extends State<settingsProfile> {
           colPhone_1 = globals.red_1;
           colPhone_2 = globals.red_2;
           colErrPhone = globals.red_1;
-          errPhone = "It's not a phoneNumber format, it must contain 8 numbers";
+          errPhone = globals.error400;
         });
       } else {
         _sharedPref();

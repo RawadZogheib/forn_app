@@ -29,27 +29,27 @@ class btn extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9.0),
-          color: Colors.blue.shade200,
+          color: Colors.amber.shade200,
         ));
   }
 }
 
-class myButton extends StatelessWidget {
+class MyButton extends StatelessWidget {
   var btnText;
   double height;
   double width;
   var onPress;
 
-  myButton({required this.btnText, required this.height, required this.width, this.onPress});
+  MyButton({required this.btnText, required this.height, required this.width, this.onPress});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Colors.blue.shade200,
+        primary: Colors.amber.shade200,
         onPrimary: globals.blue_1,
         shadowColor: Colors.transparent,
-        fixedSize: Size(height, width),
+        fixedSize: Size(width,  height),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       ),
         child: Column(
@@ -58,6 +58,7 @@ class myButton extends StatelessWidget {
             btnText == 'Order' ? const Icon(Icons.upload, size: 40,) : Container(),
             btnText == 'Gallery' ? const Icon(Icons.photo, size: 40,) : Container(),
             btnText == 'Menu' ? const Icon(Icons.book, size: 40,) : Container(),
+            btnText == 'About Us' ? const Icon(Icons.info_outline, size: 40,) : Container(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(btnText,style: const TextStyle(fontWeight: FontWeight.bold),),

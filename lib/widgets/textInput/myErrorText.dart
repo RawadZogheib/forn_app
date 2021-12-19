@@ -1,8 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:forn_app/globals/globals.dart' as globals;
-
-
 
 class myErrorText extends StatelessWidget {
   var errorText;

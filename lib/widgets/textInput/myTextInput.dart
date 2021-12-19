@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:forn_app/globals/globals.dart' as globals;
 
 class myTextInput extends StatelessWidget {
   var textString;
@@ -35,8 +36,9 @@ class myTextInput extends StatelessWidget {
       onChanged: onChange,
       textAlign: TextAlign.left,
       cursorColor: Colors.black,
+      style: TextStyle(color: globals.blue_1),
       decoration: InputDecoration(
-          hintText: this.textString,
+          hintText: textString,
           hintStyle: TextStyle(fontSize: 14.0, color: colBlue_1),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: colBlue),
@@ -53,9 +55,9 @@ class myTextInput extends StatelessWidget {
       prefixText: prefixText,
       ),
       textInputAction: textInputAction,
-      keyboardType: this.keybType,
-      obscureText: this.obscure,
-      maxLength: this.maxLength,
+      keyboardType: keybType,
+      obscureText: obscure,
+      maxLength: maxLength,
       maxLines: maxLines,
       inputFormatters: [
         if(spaceAllowed == false)

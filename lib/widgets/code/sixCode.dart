@@ -211,12 +211,12 @@ class _sixCodeState extends State<sixCode> {
           colPhone_1 = globals.red_1;
           colPhone_2 = globals.red_2;
           colErrPhone = globals.red_1;
-          errPhone = "It's not a phoneNumber format, it must contain 8 numbers";
+          errPhone = globals.error400;
         });
       }else {
         _sharedPref();
         Navigator.pop(context);
-        Navigator.pushNamed(context, '/SecondPage');
+        Navigator.pushNamed(context, '/OrderPage');
       }
     }
   }

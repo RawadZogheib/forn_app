@@ -160,7 +160,7 @@ class _FirstPage extends State<FirstPage> {
         print(localStorage.getString('Name'));
         print(localStorage.getString('PhoneNb'));
         print(localStorage.getString('Location'));
-        Navigator.pushNamed(context, '/SecondPage');
+        Navigator.pushNamed(context, '/OrderPage');
       } else {
         showDialog(
             context: context,
@@ -177,7 +177,7 @@ class _FirstPage extends State<FirstPage> {
   }
 }
 
-// class secondPage extends StatelessWidget {
+// class secondPage extends StatelessWidget { //OrderPage
 //   const secondPage({Key? key}) : super(key: key);
 //
 //   @override

@@ -4,6 +4,7 @@ import 'package:forn_app/page/first_page.dart';
 import 'package:forn_app/page/gallery_page.dart';
 import 'package:forn_app/page/order_page.dart';
 import 'package:forn_app/page/settingsProfile.dart';
+import 'package:forn_app/page/splashPage.dart';
 import 'package:forn_app/widgets/code/codeDialog.dart';
 import 'package:forn_app/widgets/code/sixCode.dart';
 import 'package:sizer/sizer.dart';
@@ -27,8 +28,9 @@ class MyApp extends StatelessWidget {
           //home: FirstPage(),
           initialRoute: '/FirstPage',
           routes: {
+            '/SplashPage': (context) => SplashPage(),
             '/FirstPage': (context) => FirstPage(),
-            '/SecondPage': (context) =>OrderPage(),
+            '/OrderPage': (context) =>OrderPage(),
             '/sixCode': (context)=>sixCode(),
             '/codeDialog': (context)=>codeDialog(),
             '/Settings': (context)=>settingsProfile(),

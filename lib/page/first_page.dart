@@ -31,12 +31,15 @@ class _FirstPage extends State<FirstPage> {
             color: Colors.white,
           ),
           actions: <Widget>[
-          IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/Settings');
-              },
-              icon: const Icon(Icons.settings))
-        ], centerTitle: true,elevation: 0,),
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Settings');
+                },
+                icon: const Icon(Icons.settings))
+          ],
+          centerTitle: true,
+          elevation: 0,
+        ),
         backgroundColor: Colors.amber,
         body: Center(
           child: Column(
@@ -111,7 +114,8 @@ class _FirstPage extends State<FirstPage> {
                             height: 150,
                             width: 150,
                             onPress: () async {
-                              SharedPreferences localStorage = await SharedPreferences.getInstance();
+                              SharedPreferences localStorage =
+                                  await SharedPreferences.getInstance();
                               localStorage.clear();
                               print("cleaned");
                               myToast.showToast('There is no prices yet',
@@ -161,9 +165,7 @@ class _FirstPage extends State<FirstPage> {
         showDialog(
             context: context,
             builder: (BuildContext context) => codeDialog()).then((exit) {
-          setState(() {
-            //_nullTextCode();
-          });
+
         });
       }
     } catch (e) {

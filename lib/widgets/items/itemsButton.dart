@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
+import 'package:forn_app/widgets/code/nbrDialog.dart';
 
 class ItemsButton extends StatefulWidget {
+  var id;
   var itemName;
   int itemQty;
   var onMinusTap;
   var onPlusTap;
+  var onMidTap;
 
   ItemsButton(
-      {required this.itemName,
+      {required this.id,
+      required this.itemName,
       required this.itemQty,
       required this.onMinusTap,
-      required this.onPlusTap});
+      required this.onPlusTap,
+      required this.onMidTap});
 
   @override
   _ItemsButtonState createState() => _ItemsButtonState();
@@ -52,11 +57,27 @@ class _ItemsButtonState extends State<ItemsButton> {
                   }
                 },
               ),
-
-              Container(width: 70,
-                  alignment: Alignment.center,
-                  child: Text(widget.itemQty.toString())),
-
+              InkWell(
+                onTap: () {
+                  globals.tmpId = widget.id;
+                  showDialog(
+                          context: context,
+                          builder: (BuildContext context) => NbrDialog())
+                      .then((exit) {
+                    setState(() {
+                      widget.itemQty = globals.qty[globals.tmpId];
+                    });
+                    widget.onMidTap();
+                  });
+                  setState(() {
+                    globals.qty[widget.id] = widget.itemQty;
+                  });
+                },
+                child: Container(
+                    width: 70,
+                    alignment: Alignment.center,
+                    child: Text(widget.itemQty.toString())),
+              ),
               InkWell(
                 child: Container(
                     height: 35,

@@ -7,62 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
 
 class OrderPage extends StatefulWidget {
-  int qtty = 0;
-  final children = <Widget>[];
-  final children2 = <Widget>[];
-  List<String> names = [
-    'زعتر',
-    'كشك',
-    'جبنة',
-    'اورما',
-    'زعتر اكسترا',
-    'لبنة',
-    'لبنة اكسترا',
-    'لحمة',
-    'لحمة صغيرة',
-    'دزينة زعتر',
-    'دزينة كشك',
-    'دزينة جبنة',
-    'دزينة لحمة',
-    'طلمة بيتزا',
-    'طلمة عادي'
-  ];
-
-  List<int> qty = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-  ];
-
-  List<int> prices = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-  ];
 
   @override
   _OrderPageState createState() => _OrderPageState();
@@ -73,7 +17,7 @@ class _OrderPageState extends State<OrderPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _loadButtons();
+    _cleanAll();
   }
 
   @override
@@ -139,7 +83,7 @@ class _OrderPageState extends State<OrderPage> {
                                 child: ListView(
                                   children: <Widget>[
                                     Wrap(
-                                      children: widget.children,
+                                      children: globals.children,
                                     ),
                                   ],
                                 ),
@@ -169,7 +113,7 @@ class _OrderPageState extends State<OrderPage> {
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           Text(
-                                            widget.qtty.toString(),
+                                            globals.qtty.toString(),
                                             style: TextStyle(
                                                 color: globals.blue_1,
                                                 fontWeight: FontWeight.bold),
@@ -221,7 +165,7 @@ class _OrderPageState extends State<OrderPage> {
                         height: 50,
                         width: MediaQuery.of(context).size.width,
                         onPress: () {
-                          if (widget.qtty > 0) {
+                          if (globals.qtty > 0) {
                             myToast.showToast('Email has been sent.', const Icon(Icons.email));
                             _beforeSendMail();
                           } else {
@@ -242,7 +186,7 @@ class _OrderPageState extends State<OrderPage> {
                         child: ListView(
                           children: [
                             Wrap(
-                              children: widget.children2,
+                              children: globals.children2,
                             )
                           ],
                         ),
@@ -258,45 +202,51 @@ class _OrderPageState extends State<OrderPage> {
 
   _loadList() {
     //print(widget.children);
-    widget.children.clear();
-    for (int i = 0; i < widget.names.length; i++) {
-      if (widget.qty[i] > 0) {
-        print("qty: " + widget.qty[i].toString());
+    globals.qtty = 0;
+    globals.children.clear();
+    for (int i = 0; i < globals.names.length; i++) {
+      if (globals.qty[i] > 0) {
+        print("qty: " + globals.qty[i].toString());
         setState(() {
-          widget.children
-              .add(FornItem(itemName: widget.names[i], itemQty: widget.qty[i]));
+          globals.qtty = globals.qtty + globals.qty[i];
+          globals.children
+              .add(FornItem(itemName: globals.names[i], itemQty: globals.qty[i]));
         });
       }
     }
-    print(widget.children);
-
+    print(globals.children);
     //  widget.children;
   }
 
   _loadButtons() {
-    for (int i = 0; i < widget.names.length; i++) {
-      widget.children2.add(ItemsButton(
-        itemName: widget.names[i],
-        itemQty: widget.qty[i],
+    for (int i = 0; i < globals.names.length; i++) {
+      globals.children2.add(ItemsButton(
+        id: i,
+        itemName: globals.names[i],
+        itemQty: globals.qty[i],
         onMinusTap: () {
-          if (widget.qty[i] > 0) {
+          if (globals.qty[i] > 0) {
             setState(() {
-              widget.qty[i]--;
-              widget.qtty--;
+              globals.qty[i]--;
+              //globals.qtty--;
             });
             _loadList();
-            print(widget.qty[i]);
+            print(globals.qty[i]);
           }
         },
         onPlusTap: () {
-          if (widget.qty[i] < 9999) {
+          if (globals.qty[i] < 9999) {
             setState(() {
-              widget.qty[i]++;
-              widget.qtty++;
+              globals.qty[i]++;
+              //globals.qtty++;
             });
             _loadList();
-            print(widget.qty[i]);
+            print(globals.qty[i]);
           }
+        },
+        onMidTap: () {
+          _loadList();
+          print(globals.qty[i]);
         },
       ));
     } //End For
@@ -305,13 +255,13 @@ class _OrderPageState extends State<OrderPage> {
   _beforeSendMail() {
     String txtMsg = '';
 
-    for (int i = 0; i < widget.names.length; i++) {
-      if (widget.qty[i] > 0) {
+    for (int i = 0; i < globals.names.length; i++) {
+      if (globals.qty[i] > 0) {
         txtMsg = txtMsg +
             '</br> ' +
-            widget.names[i].toString() +
+            globals.names[i].toString() +
             ' x ' +
-            widget.qty[i].toString() +
+            globals.qty[i].toString() +
             ' ';
       }
     }
@@ -338,27 +288,27 @@ class _OrderPageState extends State<OrderPage> {
 
   _cleanAll() {
     setState(() {
-      widget.qtty = 0;
-      widget.children.clear();
-      widget.children2.clear();
+      globals.qtty = 0;
+      globals.children.clear();
+      globals.children2.clear();
+      globals.qty = [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+      ];
     });
-    widget.qty = [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-    ];
     _loadButtons();
   }
 

@@ -83,7 +83,7 @@ class _ChangeNbrState extends State<ChangeNbr> {
     errName = '';
     colErrName = globals.transparent;
 
-    if (qtyy != '' && qtyy != null) {
+    if (qtyy != '') {
       setState(() {
         colName = Colors.amber.shade50;
         colName_1 = Colors.amber.shade900;

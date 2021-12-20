@@ -58,6 +58,10 @@ class _ItemsButtonState extends State<ItemsButton> {
                 },
               ),
               InkWell(
+                child: Container(
+                    width: 70,
+                    alignment: Alignment.center,
+                    child: Text(widget.itemQty.toString())),
                 onTap: () {
                   globals.tmpId = widget.id;
                   showDialog(
@@ -69,14 +73,10 @@ class _ItemsButtonState extends State<ItemsButton> {
                     });
                     widget.onMidTap();
                   });
-                  setState(() {
-                    globals.qty[widget.id] = widget.itemQty;
-                  });
+                  // setState(() {
+                  //   globals.qty[widget.id] = widget.itemQty;
+                  // });
                 },
-                child: Container(
-                    width: 70,
-                    alignment: Alignment.center,
-                    child: Text(widget.itemQty.toString())),
               ),
               InkWell(
                 child: Container(

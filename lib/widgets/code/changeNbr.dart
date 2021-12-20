@@ -41,6 +41,7 @@ class _ChangeNbrState extends State<ChangeNbr> {
         height: 5,
       ),
       myTextInput(
+        initialValue: '',
         keybType: const TextInputType.numberWithOptions(decimal: true),
         maxLength: 4,
         textString: 'Enter a number',

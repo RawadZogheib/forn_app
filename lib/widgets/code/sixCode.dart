@@ -67,6 +67,7 @@ class _sixCodeState extends State<sixCode> {
             height: 5,
           ),
           myTextInput(
+            initialValue: '',
             textString: 'Enter your Name',
             labelText: 'Enter your Name',
             spaceAllowed: false,
@@ -86,6 +87,7 @@ class _sixCodeState extends State<sixCode> {
             height: 5,
           ),
           myTextInput(
+            initialValue: '',
             textString: 'PhoneNumber',
             labelText: 'PhoneNumber',
             spaceAllowed: false,
@@ -106,6 +108,7 @@ class _sixCodeState extends State<sixCode> {
             height: 5,
           ),
           myTextInput(
+            initialValue: '',
             textString: 'Your Location',
             labelText: 'Your Location',
             spaceAllowed: false,

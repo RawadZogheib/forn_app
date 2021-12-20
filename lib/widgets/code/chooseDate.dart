@@ -67,6 +67,7 @@ class _chooseDateState extends State<chooseDate> {
                 height: 5,
               ),
               myTextInput(
+                initialValue: '',
                 textString: 'Description',
                 labelText: 'Description',
                 spaceAllowed: true,

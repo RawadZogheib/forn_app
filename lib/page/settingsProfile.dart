@@ -35,6 +35,13 @@ class _settingsProfileState extends State<settingsProfile> {
   Color colLocation_2 = globals.blue_2;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _sharedPrefGet();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -83,6 +90,7 @@ class _settingsProfileState extends State<settingsProfile> {
                               height: 10,
                             ),
                             myTextInput(
+                              initialValue: Name,
                               textString: 'Enter your Name',
                               labelText: 'Enter your Name',
                               spaceAllowed: true,
@@ -102,6 +110,7 @@ class _settingsProfileState extends State<settingsProfile> {
                               height: 10,
                             ),
                             myTextInput(
+                              initialValue: PhoneNb,
                               textString: 'PhoneNumber',
                               labelText: 'PhoneNumber',
                               spaceAllowed: true,
@@ -122,6 +131,7 @@ class _settingsProfileState extends State<settingsProfile> {
                               height: 10,
                             ),
                             myTextInput(
+                              initialValue: Location,
                               textString: 'Your Location',
                               labelText: 'Your Location',
                               spaceAllowed: true,
@@ -246,6 +256,14 @@ class _settingsProfileState extends State<settingsProfile> {
     }
   }
 
+  _sharedPrefGet() async {
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    setState(() {
+      Name = localStorage.getString('Name').toString();
+      PhoneNb = localStorage.getString('PhoneNb').toString();
+      Location = localStorage.getString('Location').toString();
+    });
+  }
   _sharedPref() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     localStorage.setString('Name', Name);

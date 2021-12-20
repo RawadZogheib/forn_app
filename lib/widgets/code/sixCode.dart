@@ -171,7 +171,7 @@ class _sixCodeState extends State<sixCode> {
       });
     }
 
-    if (PhoneNb != '' && PhoneNb != null && PhoneNb != '') {
+    if (PhoneNb != '' && PhoneNb != null && PhoneNb != 'null') {
       setState(() {
         colPhone = Colors.amber.shade50;
         colPhone_1 = Colors.amber.shade900;
@@ -188,7 +188,7 @@ class _sixCodeState extends State<sixCode> {
       });
     }
 
-    if (Location != '' && Location != null && Location != '') {
+    if (Location != '' && Location != null && Location != 'null') {
       setState(() {
         colLocation = Colors.amber.shade50;
         colLocation_1 = Colors.amber.shade900;

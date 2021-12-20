@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:forn_app/widgets/button/myButton.dart';
+import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
+import 'package:forn_app/widgets/code/dateDialog.dart';
+import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
 import 'package:forn_app/widgets/items/items.dart';
 import 'package:forn_app/widgets/items/itemsButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -168,8 +171,20 @@ class _OrderPageState extends State<OrderPage> {
                         width: MediaQuery.of(context).size.width,
                         onPress: () {
                           if (globals.qtty > 0) {
-                            myToast.showToast('Email has been sent.', const Icon(Icons.email));
-                            _beforeSendMail();
+                            // _beforeSendMail();
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) => dateDialog()).then((exit) {
+                                  if(globals.send == true){
+                                    globals.send = false;
+                                    _beforeSendMail();
+                                  }else {
+                                    setState(() {
+                                      globals.send = false;
+                                      _nullTextCode();
+                                    });
+                                  }
+                            });
                           } else {
                             myToast.showToast('Choose some item before\n sending your order.',
                                 const Icon(Icons.warning));
@@ -260,11 +275,11 @@ class _OrderPageState extends State<OrderPage> {
     for (int i = 0; i < globals.names.length; i++) {
       if (globals.qty[i] > 0) {
         txtMsg = txtMsg +
-            '<\/br> \t' +
+            ' ' +
             globals.names[i].toString() +
-            ' \t x \t' +
+            '  x  ' +
             globals.qty[i].toString() +
-            '\t';
+            '<\/br>';
       }
     }
 
@@ -298,12 +313,18 @@ class _OrderPageState extends State<OrderPage> {
       ..recipients.add('denymanqoushi@gmail.com')
       //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
       //..bccRecipients.add(Address('bccAddress@example.com'))
-      ..subject = 'Talabye'
+      ..subject = 'New Order'
       //..text = 'This is the plain text.\nThis is line 2 of the text part.'
-      ..html = "<p> + name + ' ' + PhoneNb + ' ' + Location + </p><br><table border = '1'><td>" + txtMsg + "</td></table></br>";
+      ..html = "<table bgcolor = '#FFFF8E'><tr style='color: #FFA000'><td><div style='color:#D35400'>Name:<\/div> " + name +
+          "<br><div style='color:#D35400'>PhoneNumber:<\/div> " + PhoneNb +
+          "<br><div style='color:#D35400'>Location:<\/div> " + Location +
+          "<br><div style='color:#D35400'>Date To Receive Delivery:<\/div> " + globals.calendDate.toString() +
+          "<br><div style='color:#D35400'>Description:<\/div> " + globals.description.toString() + "<\/br><\/br>" +
+          "<\/td></tr><tr bgcolor = '#B7950B'><td style='color: white'>" + txtMsg + "<\/td></tr></table>";
 
     try {
       final sendReport = await send(message, smtpServer);
+      myToast.showToast('Email has been sent.', const Icon(Icons.email));
       print('Message sent: ' + sendReport.toString());
     } on MailerException catch (e) {
       print('Message not sent.');
@@ -344,6 +365,14 @@ class _OrderPageState extends State<OrderPage> {
       ];
     });
     _loadButtons();
+  }
+
+  _nullTextCode(){
+    colDateCalendar = globals.blue;
+    colDateCalendar_1 = globals.blue_1;
+    colDateCalendar_2 = globals.blue_2;
+    globals.description = '';
+    globals.calendDate = '';
   }
 
 }

@@ -49,6 +49,10 @@ const String errorElse = "Failed to connect... Connection Problem.";
 const String errorException = "OOPs! Something went wrong. Try again in few seconds.";
 const String codeFailed = "your code is incorrect.";
 
+String? calendDate = null;
+String? description = null;
+bool? send = false;
+
 late FToast fToast;
 
 var tmpId;

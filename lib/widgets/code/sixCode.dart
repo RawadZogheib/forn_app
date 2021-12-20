@@ -93,6 +93,7 @@ class _sixCodeState extends State<sixCode> {
             colBlue: colPhone,
             colBlue_1: colPhone_1,
             colBlue_2: colPhone_2,
+            keybType: const TextInputType.numberWithOptions(decimal: true),
             onChange: (value) {
               PhoneNb = value;
             },

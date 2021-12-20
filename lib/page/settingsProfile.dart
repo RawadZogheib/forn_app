@@ -90,7 +90,7 @@ class _settingsProfileState extends State<settingsProfile> {
                               colBlue: colName,
                               colBlue_1: colName_1,
                               colBlue_2: colName_2,
-                              onChange: (value) async {
+                              onChange: (value) {
                                 Name = value;
                               },
                             ),
@@ -110,7 +110,6 @@ class _settingsProfileState extends State<settingsProfile> {
                               colBlue_1: colPhone_1,
                               colBlue_2: colPhone_2,
                               keybType: const TextInputType.numberWithOptions(decimal: true),
-                              maxLength: 8,
                               onChange: (value) {
                                 PhoneNb = value;
                               },

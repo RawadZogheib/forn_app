@@ -5,6 +5,8 @@ import 'package:forn_app/widgets/items/items.dart';
 import 'package:forn_app/widgets/items/itemsButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 
 class OrderPage extends StatefulWidget {
 
@@ -258,11 +260,11 @@ class _OrderPageState extends State<OrderPage> {
     for (int i = 0; i < globals.names.length; i++) {
       if (globals.qty[i] > 0) {
         txtMsg = txtMsg +
-            '</br> ' +
+            '<\/br> \t' +
             globals.names[i].toString() +
-            ' x ' +
+            ' \t x \t' +
             globals.qty[i].toString() +
-            ' ';
+            '\t';
       }
     }
 
@@ -279,6 +281,38 @@ class _OrderPageState extends State<OrderPage> {
     String name = localStorage.getString('Name').toString();
     String PhoneNb = localStorage.getString('PhoneNb').toString();
     String Location = localStorage.getString('Location').toString();
+
+
+    String username = 'denymanqoushi@gmail.com';
+    String password = "mafipassword";
+
+    final smtpServer = gmail(username, password);
+    // Use the SmtpServer class to configure an SMTP server:
+    // final smtpServer = SmtpServer('smtp.domain.com');
+    // See the named arguments of SmtpServer for further configuration
+    // options.
+
+    // Create our message.
+    final message = Message()
+      ..from = Address(username)
+      ..recipients.add('denymanqoushi@gmail.com')
+      //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
+      //..bccRecipients.add(Address('bccAddress@example.com'))
+      ..subject = 'Talabye'
+      //..text = 'This is the plain text.\nThis is line 2 of the text part.'
+      ..html = "<p> + name + ' ' + PhoneNb + ' ' + Location + </p><br><table border = '1'><td>" + txtMsg + "</td></table></br>";
+
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message sent: ' + sendReport.toString());
+    } on MailerException catch (e) {
+      print('Message not sent.');
+      for (var p in e.problems) {
+        print('Problem: ${p.code}: ${p.msg}');
+      }
+    }
+    // DONE
+
 
     print('name: ' + name);
     print('PhoneNb: ' + PhoneNb);

@@ -102,9 +102,11 @@ class _ChangeNbrState extends State<ChangeNbr> {
 
 
     if (isEmpty == false) {
-      setState(() {
-        globals.qty[globals.tmpId] = int.parse(qtyy);
-      });
+      if(int.parse(qtyy) >= 0){
+        setState(() {
+          globals.qty[globals.tmpId] = int.parse(qtyy);
+        });
+      }
       Navigator.pop(context);
     }
   }

@@ -58,11 +58,7 @@ class _chooseDateState extends State<chooseDate> {
               const SizedBox(
                 height: 5,
               ),
-              Padding(
-                padding:
-                const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
-                child: myDateOfBirth(),
-              ),
+              myDateOfBirth(),
               const SizedBox(
                 height: 5,
               ),
@@ -70,30 +66,23 @@ class _chooseDateState extends State<chooseDate> {
               const SizedBox(
                 height: 5,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: myTextInput(
-                  textString: 'Description',
-                  labelText: 'Description',
-                  spaceAllowed: true,
-                  obscure: false,
-                  colBlue: colDesc,
-                  colBlue_1: colDesc_1,
-                  colBlue_2: colDesc_2,
-                  maxLines: 5,
-                  maxLength: 500,
-                  keybType: const TextInputType.numberWithOptions(decimal: true),
-                  onChange: (value) {
-                    globals.description = value;
-                  },
-                ),
-              ),
-              const SizedBox(
-                height: 5,
+              myTextInput(
+                textString: 'Description',
+                labelText: 'Description',
+                spaceAllowed: true,
+                obscure: false,
+                colBlue: colDesc,
+                colBlue_1: colDesc_1,
+                colBlue_2: colDesc_2,
+                maxLines: 5,
+                maxLength: 500,
+                onChange: (value) {
+                  globals.description = value;
+                },
               ),
               myErrorText(errorText: errDesc, color: colErrDesc),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               InkWell(
                 child: btn(

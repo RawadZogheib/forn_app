@@ -3,16 +3,14 @@ import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:forn_app/widgets/button/myButton.dart';
 import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
 import 'package:forn_app/widgets/code/dateDialog.dart';
-import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
 import 'package:forn_app/widgets/items/items.dart';
 import 'package:forn_app/widgets/items/itemsButton.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderPage extends StatefulWidget {
-
   @override
   _OrderPageState createState() => _OrderPageState();
 }
@@ -33,12 +31,15 @@ class _OrderPageState extends State<OrderPage> {
             color: Colors.white,
           ),
           actions: <Widget>[
-          IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/Settings');
-              },
-              icon: const Icon(Icons.settings))
-        ], centerTitle: true, elevation: 0,),
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Settings');
+                },
+                icon: const Icon(Icons.settings))
+          ],
+          centerTitle: true,
+          elevation: 0,
+        ),
         backgroundColor: Colors.amber,
         body: Column(
           children: [
@@ -98,18 +99,22 @@ class _OrderPageState extends State<OrderPage> {
                           Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 4.0),
+                                padding: const EdgeInsets.fromLTRB(
+                                    8.0, 8.0, 8.0, 4.0),
                                 child: Container(
                                     height: 95,
-                                    width: MediaQuery.of(context).size.width * 0.3,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
                                     decoration: BoxDecoration(
                                         color: Colors.amber.shade100,
-                                        borderRadius: BorderRadius.circular(22.0)),
+                                        borderRadius:
+                                            BorderRadius.circular(22.0)),
                                     alignment: Alignment.center,
                                     child: Padding(
                                       padding: const EdgeInsets.all(22.0),
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Text(
                                             "Quantity: ",
@@ -128,18 +133,22 @@ class _OrderPageState extends State<OrderPage> {
                                     )),
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 8.0),
+                                padding: const EdgeInsets.fromLTRB(
+                                    8.0, 4.0, 8.0, 8.0),
                                 child: Container(
                                     height: 95,
-                                    width: MediaQuery.of(context).size.width * 0.3,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
                                     decoration: BoxDecoration(
                                         color: Colors.amber.shade100,
-                                        borderRadius: BorderRadius.circular(22.0)),
+                                        borderRadius:
+                                            BorderRadius.circular(22.0)),
                                     alignment: Alignment.center,
                                     child: Padding(
                                       padding: const EdgeInsets.all(22.0),
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Text(
                                             "Total Price: ",
@@ -174,19 +183,21 @@ class _OrderPageState extends State<OrderPage> {
                             // _beforeSendMail();
                             showDialog(
                                 context: context,
-                                builder: (BuildContext context) => dateDialog()).then((exit) {
-                                  if(globals.send == true){
-                                    globals.send = false;
-                                    _beforeSendMail();
-                                  }else {
-                                    setState(() {
-                                      globals.send = false;
-                                      _nullTextCode();
-                                    });
-                                  }
+                                builder: (BuildContext context) =>
+                                    dateDialog()).then((exit) {
+                              if (globals.send == true) {
+                                globals.send = false;
+                                _beforeSendMail();
+                              } else {
+                                setState(() {
+                                  globals.send = false;
+                                  _nullTextCode();
+                                });
+                              }
                             });
                           } else {
-                            myToast.showToast('Choose some item before\n sending your order.',
+                            myToast.showToast(
+                                'Choose some item before\n sending your order.',
                                 const Icon(Icons.warning));
                           }
                         },
@@ -194,12 +205,12 @@ class _OrderPageState extends State<OrderPage> {
                     ),
                     Expanded(
                       child: Container(
-                        margin: const EdgeInsets.fromLTRB(22.0,8.0,22.0,0.0),
-                        padding: const EdgeInsets.fromLTRB(0.0,16.0,0.0,16.0),
+                        margin: const EdgeInsets.fromLTRB(22.0, 8.0, 22.0, 0.0),
+                        padding:
+                            const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 16.0),
                         decoration: BoxDecoration(
-                          color: globals.white,
-                          borderRadius: BorderRadius.circular(22.0)
-                      ),
+                            color: globals.white,
+                            borderRadius: BorderRadius.circular(22.0)),
                         child: ListView(
                           children: [
                             Wrap(
@@ -226,8 +237,8 @@ class _OrderPageState extends State<OrderPage> {
         print("qty: " + globals.qty[i].toString());
         setState(() {
           globals.qtty = globals.qtty + globals.qty[i];
-          globals.children
-              .add(FornItem(itemName: globals.names[i], itemQty: globals.qty[i]));
+          globals.children.add(
+              FornItem(itemName: globals.names[i], itemQty: globals.qty[i]));
         });
       }
     }
@@ -282,7 +293,6 @@ class _OrderPageState extends State<OrderPage> {
             '<\/br>';
       }
     }
-
     _sendMail(txtMsg);
     _cleanAll();
   }
@@ -296,7 +306,6 @@ class _OrderPageState extends State<OrderPage> {
     String name = localStorage.getString('Name').toString();
     String PhoneNb = localStorage.getString('PhoneNb').toString();
     String Location = localStorage.getString('Location').toString();
-
 
     String username = 'denymanqoushi@gmail.com';
     String password = "mafipassword";
@@ -315,25 +324,31 @@ class _OrderPageState extends State<OrderPage> {
       //..bccRecipients.add(Address('bccAddress@example.com'))
       ..subject = 'New Order'
       //..text = 'This is the plain text.\nThis is line 2 of the text part.'
-      ..html = "<table bgcolor = '#FFFF8E'><tr style='color: #FFA000'><td><div style='color:#D35400'>Name:<\/div> " + name +
-          "<br><div style='color:#D35400'>PhoneNumber:<\/div> " + PhoneNb +
-          "<br><div style='color:#D35400'>Location:<\/div> " + Location +
-          "<br><div style='color:#D35400'>Date To Receive Delivery:<\/div> " + globals.calendDate.toString() +
-          "<br><div style='color:#D35400'>Description:<\/div> " + globals.description.toString() + "<\/br><\/br>" +
-          "<\/td></tr><tr bgcolor = '#B7950B'><td style='color: white'>" + txtMsg + "<\/td></tr></table>";
+      ..html =
+          "<table bgcolor = '#FFFF8E'><tr style='color: #FFA000'><td><div style='color:#D35400'>Name:<\/div> " +
+              name +
+              "<br><div style='color:#D35400'>PhoneNumber:<\/div> " +
+              PhoneNb +
+              "<br><div style='color:#D35400'>Location:<\/div> " +
+              Location +
+              "<br><div style='color:#D35400'>Date To Receive Delivery:<\/div> " +
+              globals.calendDate.toString() +
+              "<br><div style='color:#D35400'>Description:<\/div> " +
+              globals.description.toString() +
+              "<\/br><\/br>" +
+              "<\/td></tr><tr bgcolor = '#B7950B'><td style='color: white'>" +
+              txtMsg +
+              "<\/td></tr></table>";
 
     try {
       final sendReport = await send(message, smtpServer);
       myToast.showToast('Email has been sent.', const Icon(Icons.email));
       print('Message sent: ' + sendReport.toString());
     } on MailerException catch (e) {
+      myToast.showToast('Message not sent.', const Icon(Icons.email));
       print('Message not sent.');
-      for (var p in e.problems) {
-        print('Problem: ${p.code}: ${p.msg}');
-      }
     }
     // DONE
-
 
     print('name: ' + name);
     print('PhoneNb: ' + PhoneNb);
@@ -367,12 +382,11 @@ class _OrderPageState extends State<OrderPage> {
     _loadButtons();
   }
 
-  _nullTextCode(){
+  _nullTextCode() {
     colDateCalendar = globals.blue;
     colDateCalendar_1 = globals.blue_1;
     colDateCalendar_2 = globals.blue_2;
     globals.description = '';
     globals.calendDate = '';
   }
-
 }

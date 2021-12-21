@@ -307,10 +307,10 @@ class _OrderPageState extends State<OrderPage> {
     String PhoneNb = localStorage.getString('PhoneNb').toString();
     String Location = localStorage.getString('Location').toString();
 
-    String username = 'denymanqoushi@gmail.com';
-    String password = "mafipassword";
+    String username = 'kwikcode@hotmail.com';
+    String password = "bati5meshwe";
 
-    final smtpServer = gmail(username, password);
+    final smtpServer = hotmail(username, password);
     // Use the SmtpServer class to configure an SMTP server:
     // final smtpServer = SmtpServer('smtp.domain.com');
     // See the named arguments of SmtpServer for further configuration

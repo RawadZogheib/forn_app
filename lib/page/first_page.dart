@@ -43,6 +43,7 @@ class _FirstPage extends State<FirstPage> {
         backgroundColor: Colors.amber,
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 0,
@@ -74,6 +75,7 @@ class _FirstPage extends State<FirstPage> {
               ),
               Expanded(
                 child: Container(
+                  width: MediaQuery.of(context).size.width,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 30,
                     vertical: 30,

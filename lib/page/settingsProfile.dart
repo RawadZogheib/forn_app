@@ -258,11 +258,30 @@ class _settingsProfileState extends State<settingsProfile> {
 
   _sharedPrefGet() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
-    setState(() {
       Name = localStorage.getString('Name').toString();
       PhoneNb = localStorage.getString('PhoneNb').toString();
       Location = localStorage.getString('Location').toString();
-    });
+      if(Name == null || Name == '' || Name == 'null'){
+        //do nothing
+      }else{
+        setState(() {
+          Name;
+        });
+      }
+      if(PhoneNb == null || PhoneNb == '' || PhoneNb == 'null'){
+        //do nothing
+      }else{
+        setState(() {
+          PhoneNb;
+        });
+      }
+      if(Location == null || Location == '' || Location == 'null'){
+        //do nothing
+      }else{
+        setState(() {
+          Location;
+        });
+      }
   }
   _sharedPref() async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();

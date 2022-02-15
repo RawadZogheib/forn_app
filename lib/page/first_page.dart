@@ -87,6 +87,7 @@ class _FirstPage extends State<FirstPage> {
                       topRight: Radius.circular(30),
                     ),
                   ),
+                  alignment: Alignment.center,
                   child: Wrap(
                     children: [
                       Padding(

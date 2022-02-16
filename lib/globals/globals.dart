@@ -10,6 +10,10 @@ import 'package:forn_app/widgets/other/MyToast.dart';
 //Version
 const String version = "v1.0";
 
+//Server Ip  (page[/my_api.dart])
+const String myIP = "https://kwikcode.net/moonLighters_php/";
+
+
 //url
 const String url = 'https://KwikCode.net';
 

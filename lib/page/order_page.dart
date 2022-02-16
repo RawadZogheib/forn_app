@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:forn_app/widgets/button/myButton.dart';
@@ -9,6 +11,8 @@ import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../api/my_api.dart';
 
 class OrderPage extends StatefulWidget {
   @override
@@ -307,47 +311,74 @@ class _OrderPageState extends State<OrderPage> {
     String PhoneNb = localStorage.getString('PhoneNb').toString();
     String Location = localStorage.getString('Location').toString();
 
-    String username = 'kwikcode@hotmail.com';
-    String password = "bati5meshwe";
 
-    final smtpServer = hotmail(username, password);
-    // Use the SmtpServer class to configure an SMTP server:
-    // final smtpServer = SmtpServer('smtp.domain.com');
-    // See the named arguments of SmtpServer for further configuration
-    // options.
 
-    // Create our message.
-    final message = Message()
-      ..from = Address(username)
-      ..recipients.add('denymanqoushi@gmail.com')
-      //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
-      //..bccRecipients.add(Address('bccAddress@example.com'))
-      ..subject = 'New Order'
-      //..text = 'This is the plain text.\nThis is line 2 of the text part.'
-      ..html =
-          "<table bgcolor = '#FFFF8E'><tr style='color: #FFA000'><td><div style='color:#D35400'>Name:<\/div> " +
-              name +
-              "<br><div style='color:#D35400'>PhoneNumber:<\/div> " +
-              PhoneNb +
-              "<br><div style='color:#D35400'>Location:<\/div> " +
-              Location +
-              "<br><div style='color:#D35400'>Date To Receive Delivery:<\/div> " +
-              globals.calendDate.toString() +
-              "<br><div style='color:#D35400'>Description:<\/div> " +
-              globals.description.toString() +
-              "<\/br><\/br>" +
-              "<\/td></tr><tr bgcolor = '#B7950B'><td style='color: white'>" +
-              txtMsg +
-              "<\/td></tr></table>";
+    var data = {
+      'version': globals.version,
+      'name': name,
+      'phoneNb': PhoneNb,
+      'location': Location,
+      'calendDate': globals.calendDate.toString(),
+      'description': globals.description.toString(),
+      'txtMsg': txtMsg
 
-    try {
-      final sendReport = await send(message, smtpServer);
-      myToast.showToast('Email has been sent.', const Icon(Icons.email));
-      print('Message sent: ' + sendReport.toString());
-    } on MailerException catch (e) {
-      myToast.showToast('Message not sent.', const Icon(Icons.email));
-      print('Message not sent.');
+    };
+
+    var res =
+    await CallApi().postData(data, 'sendMail/Control/(Control)sendMail.php');
+    print(res);
+    print(res.body);
+    //print("pppppp");
+    List<dynamic> body = json.decode(res.body);
+
+
+    if(body[0] == 'true'){
+      //do nthg
+    }else{
+      //
     }
+
+    // String username = 'kwikcode@hotmail.com';
+    // String password = "bati5meshwe";
+    //
+    // final smtpServer = hotmail(username, password);
+    // // Use the SmtpServer class to configure an SMTP server:
+    // // final smtpServer = SmtpServer('smtp.domain.com');
+    // // See the named arguments of SmtpServer for further configuration
+    // // options.
+    //
+    // // Create our message.
+    // final message = Message()
+    //   ..from = Address(username)
+    //   ..recipients.add('denymanqoushi@gmail.com')
+    //   //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
+    //   //..bccRecipients.add(Address('bccAddress@example.com'))
+    //   ..subject = 'New Order'
+    //   //..text = 'This is the plain text.\nThis is line 2 of the text part.'
+    //   ..html =
+    //       "<table bgcolor = '#FFFF8E'><tr style='color: #FFA000'><td><div style='color:#D35400'>Name:<\/div> " +
+    //           name +
+    //           "<br><div style='color:#D35400'>PhoneNumber:<\/div> " +
+    //           PhoneNb +
+    //           "<br><div style='color:#D35400'>Location:<\/div> " +
+    //           Location +
+    //           "<br><div style='color:#D35400'>Date To Receive Delivery:<\/div> " +
+    //           globals.calendDate.toString() +
+    //           "<br><div style='color:#D35400'>Description:<\/div> " +
+    //           globals.description.toString() +
+    //           "<\/br><\/br>" +
+    //           "<\/td></tr><tr bgcolor = '#B7950B'><td style='color: white'>" +
+    //           txtMsg +
+    //           "<\/td></tr></table>";
+    //
+    // try {
+    //   final sendReport = await send(message, smtpServer);
+    //   myToast.showToast('Email has been sent.', const Icon(Icons.email));
+    //   print('Message sent: ' + sendReport.toString());
+    // } on MailerException catch (e) {
+    //   myToast.showToast('Message not sent.', const Icon(Icons.email));
+    //   print('Message not sent.');
+    // }
     // DONE
 
     print('name: ' + name);

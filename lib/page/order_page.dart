@@ -318,8 +318,8 @@ class _OrderPageState extends State<OrderPage> {
       'name': name,
       'phoneNb': PhoneNb,
       'location': Location,
-      'calendDate': globals.calendDate.toString(),
-      'description': globals.description.toString(),
+      'calendDate': globals.calendDate,
+      'description': globals.description,
       'txtMsg': txtMsg
 
     };
@@ -329,14 +329,7 @@ class _OrderPageState extends State<OrderPage> {
     print(res);
     print(res.body);
     //print("pppppp");
-    List<dynamic> body = json.decode(res.body);
-
-
-    if(body[0] == 'true'){
-      //do nthg
-    }else{
-      //
-    }
+    
 
     // String username = 'kwikcode@hotmail.com';
     // String password = "bati5meshwe";

@@ -96,7 +96,7 @@ class _ChangeNbrState extends State<ChangeNbr> {
         colName = Colors.red.shade50;
         colName_1 = Colors.red.shade900;
         colName_2 = Colors.red.shade900.withOpacity(0.5);
-        errName = globals.error7;
+        errName = globals.warning7;
         colErrName = globals.red_1;
       });
     }

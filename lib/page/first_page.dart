@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:forn_app/api/my_api.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
+import 'package:forn_app/widgets/PopUp/errorWarningPopup.dart';
 import 'package:forn_app/widgets/button/myButton.dart';
 import 'package:forn_app/widgets/code/codeDialog.dart';
 import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
@@ -51,7 +55,6 @@ class _FirstPage extends State<FirstPage> {
               Container(
                 height: 40,
                 alignment: Alignment.center,
-                margin: const EdgeInsets.only(left: 25),
                 child: DefaultTextStyle(
                   style: const TextStyle(
                     fontSize: 30.0,
@@ -76,10 +79,7 @@ class _FirstPage extends State<FirstPage> {
               Expanded(
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 30,
-                  ),
+                  padding: const EdgeInsets.only(top: 25),
                   decoration: BoxDecoration(
                     color: globals.whiteBlue,
                     borderRadius: const BorderRadius.only(
@@ -94,8 +94,8 @@ class _FirstPage extends State<FirstPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: MyButton(
                             btnText: 'Order',
-                            height: 150,
-                            width: 150,
+                            height: 140,
+                            width: 140,
                             onPress: () {
                               orderMethod();
                             },
@@ -104,8 +104,8 @@ class _FirstPage extends State<FirstPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: MyButton(
                             btnText: 'Gallery',
-                            height: 150,
-                            width: 150,
+                            height: 140,
+                            width: 140,
                             onPress: () {
                               Navigator.pushNamed(context, '/GalleryPage');
                             },
@@ -114,8 +114,8 @@ class _FirstPage extends State<FirstPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: MyButton(
                             btnText: 'Menu',
-                            height: 150,
-                            width: 150,
+                            height: 140,
+                            width: 140,
                             onPress: () async {
                               // SharedPreferences localStorage =
                               //     await SharedPreferences.getInstance();
@@ -129,8 +129,8 @@ class _FirstPage extends State<FirstPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: MyButton(
                             btnText: 'About Us',
-                            height: 150,
-                            width: 150,
+                            height: 140,
+                            width: 140,
                             onPress: () {
                               Navigator.pushNamed(context, '/AboutUs');
                             },
@@ -163,7 +163,27 @@ class _FirstPage extends State<FirstPage> {
         print(localStorage.getString('Name'));
         print(localStorage.getString('PhoneNb'));
         print(localStorage.getString('Location'));
-        Navigator.pushNamed(context, '/OrderPage');
+
+
+        var data = {
+          'version': globals.version,
+        };
+
+        var res = await CallApi().postData(data, '(Control)loadTables.php');
+        print(res.body);
+        List<dynamic> body = json.decode(res.body);
+
+
+        if (body[0] == "success") {
+          Navigator.pushNamed(context, '/OrderPage');
+        } else if (body[0] == "errorVersion") {
+          ErrorPopup(context, globals.errorVersion);
+        } else if (body[0] == "error7") {
+          WarningPopup(context, globals.warning7);
+        } else {
+          ErrorPopup(context, globals.errorElse);
+        }
+
       } else {
         showDialog(
             context: context,
@@ -172,10 +192,7 @@ class _FirstPage extends State<FirstPage> {
         });
       }
     } catch (e) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) =>
-              ErrorAlertDialog(message: globals.errorException));
+        ErrorPopup(context, globals.errorException);
     }
   }
 }

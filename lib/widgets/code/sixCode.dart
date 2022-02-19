@@ -169,7 +169,7 @@ class _sixCodeState extends State<sixCode> {
         colName = Colors.red.shade50;
         colName_1 = Colors.red.shade900;
         colName_2 = Colors.red.shade900.withOpacity(0.5);
-        errName = globals.error7;
+        errName = globals.warning7;
         colErrName = globals.red_1;
       });
     }
@@ -186,7 +186,7 @@ class _sixCodeState extends State<sixCode> {
         colPhone = Colors.red.shade50;
         colPhone_1 = Colors.red.shade900;
         colPhone_2 = Colors.red.shade900.withOpacity(0.5);
-        errPhone = globals.error7;
+        errPhone = globals.warning7;
         colErrPhone = globals.red_1;
       });
     }
@@ -203,7 +203,7 @@ class _sixCodeState extends State<sixCode> {
         colLocation = Colors.red.shade50;
         colLocation_1 = Colors.red.shade900;
         colLocation_2 = Colors.red.shade900.withOpacity(0.5);
-        errLoc = globals.error7;
+        errLoc = globals.warning7;
         colErrLoc = globals.red_1;
       });
     }

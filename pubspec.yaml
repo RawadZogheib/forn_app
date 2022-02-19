@@ -43,6 +43,7 @@ dependencies:
   mailer: ^5.0.2
   datetime_picker_formfield: ^2.0.0
   http: ^0.13.4
+  motion_toast: ^2.1.1
 
 dev_dependencies:
   flutter_test:

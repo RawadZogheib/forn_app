@@ -125,7 +125,7 @@ class _chooseDateState extends State<chooseDate> {
         colDateCalendar = Colors.red.shade50;
         colDateCalendar_1 = Colors.red.shade900;
         colDateCalendar_2 = Colors.red.shade900.withOpacity(0.5);
-        errDate = globals.error7;
+        errDate = globals.warning7;
         colErrDate = globals.red_1;
       });
     }
@@ -142,7 +142,7 @@ class _chooseDateState extends State<chooseDate> {
         colDesc = Colors.red.shade50;
         colDesc_1 = Colors.red.shade900;
         colDesc_2 = Colors.red.shade900.withOpacity(0.5);
-        errDesc = globals.error7;
+        errDesc = globals.warning7;
         colErrDesc = globals.red_1;
       });
     }

@@ -87,14 +87,18 @@ class _OrderPageState extends State<OrderPage> {
                                 width:
                                     MediaQuery.of(context).size.width * 0.557,
                                 decoration: BoxDecoration(
-                                    color: Colors.amber.shade100,
-                                    borderRadius: BorderRadius.circular(12.0)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(22.0),
+                                  color: Colors.amber.shade100,
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.0),
                                   child: SingleChildScrollView(
                                     controller: ScrollController(),
-                                    child: Wrap(
-                                      children: globals.children,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: Wrap(
+                                        children: globals.children,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -214,15 +218,21 @@ class _OrderPageState extends State<OrderPage> {
                     Expanded(
                       child: Container(
                         margin: const EdgeInsets.fromLTRB(22.0, 8.0, 22.0, 0.0),
-                        padding:
-                            const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 16.0),
                         decoration: BoxDecoration(
-                            color: globals.white,
-                            borderRadius: BorderRadius.circular(22.0)),
-                        child: SingleChildScrollView(
-                          controller: ScrollController(),
-                          child: Wrap(
-                            children: globals.children2,
+                          color: globals.white,
+                          borderRadius: BorderRadius.circular(22.0),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(22.0),
+                          child: SingleChildScrollView(
+                            controller: ScrollController(),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
+                              child: Wrap(
+                                children: globals.children2,
+                              ),
+                            ),
                           ),
                         ),
                       ),

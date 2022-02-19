@@ -9,6 +9,8 @@ import 'package:forn_app/widgets/code/dateDialog.dart';
 import 'package:forn_app/widgets/items/items.dart';
 import 'package:forn_app/widgets/items/itemsButton.dart';
 import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/my_api.dart';
@@ -366,9 +368,42 @@ class _OrderPageState extends State<OrderPage> {
       print(res.body);
       List<dynamic> body = json.decode(res.body);
       if (body[0] == 'true') {
-        myToast.showToast('Email has been sent.', const Icon(Icons.email));
+        MotionToast(
+          icon: Icons.email,
+          primaryColor: globals.yellow2,
+          secondaryColor: globals.yellow1,
+          toastDuration: const Duration(seconds: 3),
+          backgroundType: BACKGROUND_TYPE.solid,
+          title: const Text(
+            'Success',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          description: const Text(
+            'Email has been sent.',
+          ),
+          position: MOTION_TOAST_POSITION.bottom,
+          animationType: ANIMATION.fromRight,
+          height: 100,
+        ).show(context);
+        //myToast.showToast('Email has been sent.', const Icon(Icons.email));
       } else {
-        myToast.showToast('Message not sent.', const Icon(Icons.email));
+        MotionToast(
+          icon: Icons.email,
+          primaryColor: globals.red2,
+          secondaryColor: globals.red1,
+          toastDuration: const Duration(seconds: 3),
+          backgroundType: BACKGROUND_TYPE.solid,
+          title: const Text(
+            'Error',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          description: const Text(
+            'Message not sent.',
+          ),
+          position: MOTION_TOAST_POSITION.bottom,
+          animationType: ANIMATION.fromRight,
+          height: 100,
+        ).show(context);
         print('Message not sent.');
       }
       //print("pppppp");
@@ -416,7 +451,24 @@ class _OrderPageState extends State<OrderPage> {
       print('Location: ' + Location);
       print('txtMsg: ' + txtMsg);
     } catch (e) {
-      myToast.showToast('Message not sent.', const Icon(Icons.email));
+      MotionToast(
+        icon: Icons.email,
+        primaryColor: globals.red2,
+        secondaryColor: globals.red1,
+        toastDuration: const Duration(seconds: 3),
+        backgroundType: BACKGROUND_TYPE.solid,
+        title: const Text(
+          'Error',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        description: const Text(
+          'Message not sent.',
+        ),
+        position: MOTION_TOAST_POSITION.bottom,
+        animationType: ANIMATION.fromRight,
+        height: 100,
+      ).show(context);
+      // myToast.showToast('Message not sent.', const Icon(Icons.email));
       print('Message not sent.');
     }
     // DONE

@@ -333,7 +333,8 @@ class _OrderPageState extends State<OrderPage> {
       'location': Location,
       'calendDate': globals.calendDate,
       'description': globals.description,
-      'txtMsg': txtMsg
+      'txtMsg': txtMsg,
+      'price': globals.price
     };
 
     var res = await CallApi()

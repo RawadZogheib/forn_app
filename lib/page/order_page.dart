@@ -19,7 +19,6 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
-
   @override
   void dispose() {
     // TODO: implement dispose
@@ -344,75 +343,83 @@ class _OrderPageState extends State<OrderPage> {
     //email sender: KwikCode@hotmail.com
     //email receiver: denymanqoushi@gmail.com
 
-    SharedPreferences localStorage = await SharedPreferences.getInstance();
-    String name = localStorage.getString('Name').toString();
-    String PhoneNb = localStorage.getString('PhoneNb').toString();
-    String Location = localStorage.getString('Location').toString();
+    try {
+      SharedPreferences localStorage = await SharedPreferences.getInstance();
+      String name = localStorage.getString('Name').toString();
+      String PhoneNb = localStorage.getString('PhoneNb').toString();
+      String Location = localStorage.getString('Location').toString();
 
-    var data = {
-      'version': globals.version,
-      'name': name,
-      'phoneNb': PhoneNb,
-      'location': Location,
-      'calendDate': globals.calendDate,
-      'description': globals.description,
-      'txtMsg': txtMsg,
-      'price': globals.price
-    };
+      var data = {
+        'version': globals.version,
+        'name': name,
+        'phoneNb': PhoneNb,
+        'location': Location,
+        'calendDate': globals.calendDate,
+        'description': globals.description,
+        'txtMsg': txtMsg,
+        'price': globals.price
+      };
 
-    var res = await CallApi()
-        .postData(data, 'sendMail/Control/(Control)sendMail.php');
-    print(res);
-    print(res.body);
-    //print("pppppp");
+      var res = await CallApi()
+          .postData(data, 'sendMail/Control/(Control)sendMail.php');
+      print(res);
+      print(res.body);
+      List<dynamic> body = json.decode(res.body);
+      if (body[0] == 'true') {
+        myToast.showToast('Email has been sent.', const Icon(Icons.email));
+      } else {
+        myToast.showToast('Message not sent.', const Icon(Icons.email));
+        print('Message not sent.');
+      }
+      //print("pppppp");
 
-    // String username = 'kwikcode@hotmail.com';
-    // String password = "bati5meshwe";
-    //
-    // final smtpServer = hotmail(username, password);
-    // // Use the SmtpServer class to configure an SMTP server:
-    // // final smtpServer = SmtpServer('smtp.domain.com');
-    // // See the named arguments of SmtpServer for further configuration
-    // // options.
-    //
-    // // Create our message.
-    // final message = Message()
-    //   ..from = Address(username)
-    //   ..recipients.add('denymanqoushi@gmail.com')
-    //   //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
-    //   //..bccRecipients.add(Address('bccAddress@example.com'))
-    //   ..subject = 'New Order'
-    //   //..text = 'This is the plain text.\nThis is line 2 of the text part.'
-    //   ..html =
-    //       "<table bgcolor = '#FFFF8E'><tr style='color: #FFA000'><td><div style='color:#D35400'>Name:<\/div> " +
-    //           name +
-    //           "<br><div style='color:#D35400'>PhoneNumber:<\/div> " +
-    //           PhoneNb +
-    //           "<br><div style='color:#D35400'>Location:<\/div> " +
-    //           Location +
-    //           "<br><div style='color:#D35400'>Date To Receive Delivery:<\/div> " +
-    //           globals.calendDate.toString() +
-    //           "<br><div style='color:#D35400'>Description:<\/div> " +
-    //           globals.description.toString() +
-    //           "<\/br><\/br>" +
-    //           "<\/td></tr><tr bgcolor = '#B7950B'><td style='color: white'>" +
-    //           txtMsg +
-    //           "<\/td></tr></table>";
-    //
-    // try {
-    //   final sendReport = await send(message, smtpServer);
-    //   myToast.showToast('Email has been sent.', const Icon(Icons.email));
-    //   print('Message sent: ' + sendReport.toString());
-    // } on MailerException catch (e) {
-    //   myToast.showToast('Message not sent.', const Icon(Icons.email));
-    //   print('Message not sent.');
-    // }
+      // String username = 'kwikcode@hotmail.com';
+      // String password = "bati5meshwe";
+      //
+      // final smtpServer = hotmail(username, password);
+      // // Use the SmtpServer class to configure an SMTP server:
+      // // final smtpServer = SmtpServer('smtp.domain.com');
+      // // See the named arguments of SmtpServer for further configuration
+      // // options.
+      //
+      // // Create our message.
+      // final message = Message()
+      //   ..from = Address(username)
+      //   ..recipients.add('denymanqoushi@gmail.com')
+      //   //..ccRecipients.addAll(['destCc1@example.com', 'destCc2@example.com'])
+      //   //..bccRecipients.add(Address('bccAddress@example.com'))
+      //   ..subject = 'New Order'
+      //   //..text = 'This is the plain text.\nThis is line 2 of the text part.'
+      //   ..html =
+      //       "<table bgcolor = '#FFFF8E'><tr style='color: #FFA000'><td><div style='color:#D35400'>Name:<\/div> " +
+      //           name +
+      //           "<br><div style='color:#D35400'>PhoneNumber:<\/div> " +
+      //           PhoneNb +
+      //           "<br><div style='color:#D35400'>Location:<\/div> " +
+      //           Location +
+      //           "<br><div style='color:#D35400'>Date To Receive Delivery:<\/div> " +
+      //           globals.calendDate.toString() +
+      //           "<br><div style='color:#D35400'>Description:<\/div> " +
+      //           globals.description.toString() +
+      //           "<\/br><\/br>" +
+      //           "<\/td></tr><tr bgcolor = '#B7950B'><td style='color: white'>" +
+      //           txtMsg +
+      //           "<\/td></tr></table>";
+      //
+      // try {
+      //   final sendReport = await send(message, smtpServer);
+      //   myToast.showToast('Email has been sent.', const Icon(Icons.email));
+      //   print('Message sent: ' + sendReport.toString());
+
+      print('name: ' + name);
+      print('PhoneNb: ' + PhoneNb);
+      print('Location: ' + Location);
+      print('txtMsg: ' + txtMsg);
+    } catch (e) {
+      myToast.showToast('Message not sent.', const Icon(Icons.email));
+      print('Message not sent.');
+    }
     // DONE
-
-    print('name: ' + name);
-    print('PhoneNb: ' + PhoneNb);
-    print('Location: ' + Location);
-    print('txtMsg: ' + txtMsg);
   }
 
   _cleanAll() async {

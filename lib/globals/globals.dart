@@ -72,58 +72,9 @@ late FToast fToast;
 var tmpId;
 
 int qtty = 0;
+int price = 0;
 final children = <Widget>[];
 final children2 = <Widget>[];
-List<String> names = [
-  'زعتر',
-  'كشك',
-  'جبنة',
-  'اورما',
-  'زعتر اكسترا',
-  'لبنة',
-  'لبنة اكسترا',
-  'لحمة',
-  'لحمة صغيرة',
-  'دزينة زعتر',
-  'دزينة كشك',
-  'دزينة جبنة',
-  'دزينة لحمة',
-  'طلمة بيتزا',
-  'طلمة عادي'
-];
-
-List<int> qty = [
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-];
-
-List<int> prices = [
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-];
+List<String> names = [];
+List<int> qty = [];
+List<int> prices = [];

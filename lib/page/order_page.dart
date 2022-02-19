@@ -2,14 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
+import 'package:forn_app/widgets/PopUp/errorWarningPopup.dart';
 import 'package:forn_app/widgets/button/myButton.dart';
 import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
 import 'package:forn_app/widgets/code/dateDialog.dart';
 import 'package:forn_app/widgets/items/items.dart';
 import 'package:forn_app/widgets/items/itemsButton.dart';
 import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/my_api.dart';
@@ -80,98 +79,103 @@ class _OrderPageState extends State<OrderPage> {
                       padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
                       child: Row(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 200,
-                              width: MediaQuery.of(context).size.width * 0.557,
-                              decoration: BoxDecoration(
-                                  color: Colors.amber.shade100,
-                                  borderRadius: BorderRadius.circular(12.0)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(22.0),
-                                child: ListView(
-                                  children: <Widget>[
-                                    Wrap(
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                height: 200,
+                                width:
+                                    MediaQuery.of(context).size.width * 0.557,
+                                decoration: BoxDecoration(
+                                    color: Colors.amber.shade100,
+                                    borderRadius: BorderRadius.circular(12.0)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(22.0),
+                                  child: SingleChildScrollView(
+                                    controller: ScrollController(),
+                                    child: Wrap(
                                       children: globals.children,
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                          Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    8.0, 8.0, 8.0, 4.0),
-                                child: Container(
-                                    height: 95,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.3,
-                                    decoration: BoxDecoration(
-                                        color: Colors.amber.shade100,
-                                        borderRadius:
-                                            BorderRadius.circular(22.0)),
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(22.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "Quantity: ",
-                                            style: TextStyle(
-                                                color: globals.blue_1,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            globals.qtty.toString(),
-                                            style: TextStyle(
-                                                color: globals.blue_1,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    8.0, 4.0, 8.0, 8.0),
-                                child: Container(
-                                    height: 95,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.3,
-                                    decoration: BoxDecoration(
-                                        color: Colors.amber.shade100,
-                                        borderRadius:
-                                            BorderRadius.circular(22.0)),
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(22.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "Total Price: ",
-                                            style: TextStyle(
-                                                color: globals.blue_1,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          const Text(
-                                            "There is no prices yet.",
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.red,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    )),
-                              ),
-                            ],
+                          Expanded(
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                      8.0, 8.0, 8.0, 4.0),
+                                  child: Container(
+                                      height: 95,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.3,
+                                      decoration: BoxDecoration(
+                                          color: Colors.amber.shade100,
+                                          borderRadius:
+                                              BorderRadius.circular(22.0)),
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(22.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Quantity: ",
+                                              style: TextStyle(
+                                                  color: globals.blue_1,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              globals.qtty.toString(),
+                                              style: TextStyle(
+                                                  color: globals.blue_1,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                      8.0, 4.0, 8.0, 8.0),
+                                  child: Container(
+                                      height: 95,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.3,
+                                      decoration: BoxDecoration(
+                                          color: Colors.amber.shade100,
+                                          borderRadius:
+                                              BorderRadius.circular(22.0)),
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(22.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Total Price: ",
+                                              style: TextStyle(
+                                                  color: globals.blue_1,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              globals.price.toString(),
+                                              //"There is no prices yet.",
+                                              style: const TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
@@ -215,12 +219,11 @@ class _OrderPageState extends State<OrderPage> {
                         decoration: BoxDecoration(
                             color: globals.white,
                             borderRadius: BorderRadius.circular(22.0)),
-                        child: ListView(
-                          children: [
-                            Wrap(
-                              children: globals.children2,
-                            )
-                          ],
+                        child: SingleChildScrollView(
+                          controller: ScrollController(),
+                          child: Wrap(
+                            children: globals.children2,
+                          ),
                         ),
                       ),
                     ),
@@ -235,11 +238,13 @@ class _OrderPageState extends State<OrderPage> {
   _loadList() {
     //print(widget.children);
     globals.qtty = 0;
+    globals.price = 0;
     globals.children.clear();
     for (int i = 0; i < globals.names.length; i++) {
       if (globals.qty[i] > 0) {
         print("qty: " + globals.qty[i].toString());
         setState(() {
+          globals.price = globals.price + globals.qty[i] * globals.prices[i];
           globals.qtty = globals.qtty + globals.qty[i];
           globals.children.add(
               FornItem(itemName: globals.names[i], itemQty: globals.qty[i]));
@@ -311,8 +316,6 @@ class _OrderPageState extends State<OrderPage> {
     String PhoneNb = localStorage.getString('PhoneNb').toString();
     String Location = localStorage.getString('Location').toString();
 
-
-
     var data = {
       'version': globals.version,
       'name': name,
@@ -321,15 +324,13 @@ class _OrderPageState extends State<OrderPage> {
       'calendDate': globals.calendDate,
       'description': globals.description,
       'txtMsg': txtMsg
-
     };
 
-    var res =
-    await CallApi().postData(data, 'sendMail/Control/(Control)sendMail.php');
+    var res = await CallApi()
+        .postData(data, 'sendMail/Control/(Control)sendMail.php');
     print(res);
     print(res.body);
     //print("pppppp");
-    
 
     // String username = 'kwikcode@hotmail.com';
     // String password = "bati5meshwe";
@@ -380,30 +381,45 @@ class _OrderPageState extends State<OrderPage> {
     print('txtMsg: ' + txtMsg);
   }
 
-  _cleanAll() {
-    setState(() {
-      globals.qtty = 0;
-      globals.children.clear();
-      globals.children2.clear();
-      globals.qty = [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-      ];
-    });
-    _loadButtons();
+  _cleanAll() async {
+    try {
+      var data = {
+        'version': globals.version,
+      };
+
+      var res = await CallApi()
+          .postData(data, 'Order/Control/(Control)getItemPrice.php');
+      print(res.body);
+      List<dynamic> body = json.decode(res.body);
+
+      if (body[0] == "success") {
+        setState(() {
+          globals.qtty = 0;
+          globals.price = 0;
+          globals.qty.clear();
+          globals.names.clear();
+          globals.prices.clear();
+          globals.children.clear();
+          globals.children2.clear();
+          for (int i = 0; i < body[1].length; i++) {
+            globals.qty.add(0);
+            globals.names.add(body[1][i][0]);
+            globals.prices.add(int.parse(body[1][i][1]));
+          }
+        });
+
+        _loadButtons();
+      } else if (body[0] == "empty") {
+        WarningPopup(context, 'No Item yet!!');
+      } else if (body[0] == "errorVersion") {
+        ErrorPopup(context, globals.errorVersion);
+      } else {
+        ErrorPopup(context, globals.errorElse);
+      }
+    } catch (e) {
+      print(e);
+      ErrorPopup(context, globals.errorException);
+    }
   }
 
   _nullTextCode() {

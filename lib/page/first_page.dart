@@ -9,7 +9,6 @@ import 'package:forn_app/widgets/PopUp/errorWarningPopup.dart';
 import 'package:forn_app/widgets/button/myButton.dart';
 import 'package:forn_app/widgets/code/codeDialog.dart';
 import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
-import 'package:forn_app/widgets/other/errorAlertDialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FirstPage extends StatefulWidget {
@@ -48,6 +47,7 @@ class _FirstPage extends State<FirstPage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 0,
@@ -87,54 +87,62 @@ class _FirstPage extends State<FirstPage> {
                       topRight: Radius.circular(30),
                     ),
                   ),
-                  alignment: Alignment.center,
-                  child: Wrap(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: MyButton(
-                            btnText: 'Order',
-                            height: 140,
-                            width: 140,
-                            onPress: () {
-                              orderMethod();
-                            },
-                          )),
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: MyButton(
-                            btnText: 'Gallery',
-                            height: 140,
-                            width: 140,
-                            onPress: () {
-                              Navigator.pushNamed(context, '/GalleryPage');
-                            },
-                          )),
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: MyButton(
-                            btnText: 'Menu',
-                            height: 140,
-                            width: 140,
-                            onPress: () async {
-                              // SharedPreferences localStorage =
-                              //     await SharedPreferences.getInstance();
-                              // localStorage.clear();
-                              // print("cleaned");
-                              myToast.showToast('There is no prices yet',
-                                  const Icon(Icons.alarm));
-                            },
-                          )),
-                      Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: MyButton(
-                            btnText: 'About Us',
-                            height: 140,
-                            width: 140,
-                            onPress: () {
-                              Navigator.pushNamed(context, '/AboutUs');
-                            },
-                          )),
+                      SizedBox(
+                        width: 312,
+                        child: Wrap(
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: MyButton(
+                                  btnText: 'Order',
+                                  height: 140,
+                                  width: 140,
+                                  onPress: () {
+                                    orderMethod();
+                                  },
+                                )),
+                            Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: MyButton(
+                                  btnText: 'Gallery',
+                                  height: 140,
+                                  width: 140,
+                                  onPress: () {
+                                    Navigator.pushNamed(context, '/GalleryPage');
+                                  },
+                                )),
+                            Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: MyButton(
+                                  btnText: 'Menu',
+                                  height: 140,
+                                  width: 140,
+                                  onPress: () async {
+                                    // SharedPreferences localStorage =
+                                    //     await SharedPreferences.getInstance();
+                                    // localStorage.clear();
+                                    // print("cleaned");
+                                    myToast.showToast('There is no prices yet',
+                                        const Icon(Icons.alarm));
+                                  },
+                                )),
+                            Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: MyButton(
+                                  btnText: 'About Us',
+                                  height: 140,
+                                  width: 140,
+                                  onPress: () {
+                                    Navigator.pushNamed(context, '/AboutUs');
+                                  },
+                                )),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -160,39 +168,36 @@ class _FirstPage extends State<FirstPage> {
         // localStorage.setString('Name', '');
         // localStorage.setString('PhoneNb', '');
         // localStorage.setString('Location', '');
-        print(localStorage.getString('Name'));
-        print(localStorage.getString('PhoneNb'));
-        print(localStorage.getString('Location'));
-
+        // print(localStorage.getString('Name'));
+        // print(localStorage.getString('PhoneNb'));
+        // print(localStorage.getString('Location'));
 
         var data = {
           'version': globals.version,
         };
 
-        var res = await CallApi().postData(data, '(Control)loadTables.php');
+        var res = await CallApi()
+            .postData(data, 'Order/Control/(Control)checkClock.php');
         print(res.body);
         List<dynamic> body = json.decode(res.body);
 
-
-        if (body[0] == "success") {
+        if (body[0] == "true") {
           Navigator.pushNamed(context, '/OrderPage');
+        } else if (body[0] == "errorTime") {
+          WarningPopup(context,
+              'Sorry! Orders are only available from ${body[1]} to ${body[2]} ');
         } else if (body[0] == "errorVersion") {
           ErrorPopup(context, globals.errorVersion);
-        } else if (body[0] == "error7") {
-          WarningPopup(context, globals.warning7);
         } else {
           ErrorPopup(context, globals.errorElse);
         }
-
       } else {
         showDialog(
             context: context,
-            builder: (BuildContext context) => codeDialog()).then((exit) {
-
-        });
+            builder: (BuildContext context) => codeDialog()).then((exit) {});
       }
     } catch (e) {
-        ErrorPopup(context, globals.errorException);
+      ErrorPopup(context, globals.errorException);
     }
   }
 }

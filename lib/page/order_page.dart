@@ -169,9 +169,9 @@ class _OrderPageState extends State<OrderPage> {
                                             Text(
                                               globals.price.toString(),
                                               //"There is no prices yet.",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   fontSize: 12,
-                                                  color: Colors.red,
+                                                  color: globals.blue_1,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ],

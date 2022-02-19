@@ -5,8 +5,7 @@ import 'package:forn_app/globals/globals.dart' as globals;
 List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (1).jpg',
-    price: '\$20.00',
-    photographer: 'Martin Andres',
+    price: '',
     title: 'New Year',
     details:
         'This image was taken during a party in New York on new years eve. Quite a colorful shot.',
@@ -14,7 +13,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (2).jpg',
     price: '\$10.00',
-    photographer: 'Abraham Costa',
     title: 'Spring',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -22,7 +20,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (3).jpg',
     price: '\$30.00',
-    photographer: 'Jamie Bryan',
     title: 'Casual Look',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -30,7 +27,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (4).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -38,7 +34,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (5).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -46,7 +41,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (6).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -54,7 +48,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (7).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -62,7 +55,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (8).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -70,7 +62,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (9).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -78,7 +69,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (10).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -86,7 +76,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (11).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -94,7 +83,6 @@ List<ImageDetails> _images = [
   ImageDetails(
     imagePath: 'Assets/img/img (12).jpg',
     price: '\$20.00',
-    photographer: 'Jamie Bryan',
     title: 'New York',
     details:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
@@ -166,7 +154,6 @@ class GalleryPage extends StatelessWidget {
                             builder: (context) => DetailsPage(
                               imagePath: _images[index].imagePath,
                               title: _images[index].title,
-                              photographer: _images[index].photographer,
                               price: _images[index].price,
                               details: _images[index].details,
                               index: index,
@@ -202,14 +189,12 @@ class GalleryPage extends StatelessWidget {
 class ImageDetails {
   final String imagePath;
   final String price;
-  final String photographer;
   final String title;
   final String details;
 
   ImageDetails({
     required this.imagePath,
     required this.price,
-    required this.photographer,
     required this.title,
     required this.details,
   });

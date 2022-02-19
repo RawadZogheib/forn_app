@@ -19,11 +19,25 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    globals.qtty = 0;
+    globals.price = 0;
+    globals.qty.clear();
+    globals.names.clear();
+    globals.prices.clear();
+    globals.children.clear();
+    globals.children2.clear();
+    super.dispose();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
     _cleanAll();
+    super.initState();
   }
 
   @override
@@ -313,7 +327,16 @@ class _OrderPageState extends State<OrderPage> {
       }
     }
     _sendMail(txtMsg);
-    _cleanAll();
+    setState(() {
+      globals.qtty = 0;
+      globals.price = 0;
+      globals.children.clear();
+      globals.children2.clear();
+      for (int i = 0; i < globals.names.length; i++) {
+        globals.qty[i] = 0;
+      }
+      _loadButtons();
+    });
   }
 
   _sendMail(String txtMsg) async {

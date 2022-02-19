@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 class DetailsPage extends StatelessWidget {
   final String imagePath;
   final String title;
-  final String photographer;
   final String price;
   final String details;
   final int index;
+
   DetailsPage(
       {required this.imagePath,
-        required this.title,
-        required this.photographer,
-        required this.price,
-        required this.details,
-        required this.index});
+      required this.title,
+      required this.price,
+      required this.details,
+      required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -56,23 +55,31 @@ class DetailsPage extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        Text(
-                          'By $photographer',
-                          style: const TextStyle(
-                            fontSize: 10,
-                          ),
-                        ),
-                        Text(
-                          price,
-                          style: const TextStyle(
-                            color: Colors.amber,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        // Text(
+                        //   'By $photographer',
+                        //   style: const TextStyle(
+                        //     fontSize: 10,
+                        //   ),
+                        // ),
+                        price != ''
+                            ? Column(
+                                children: [
+                                  Text(
+                                    price,
+                                    style: const TextStyle(
+                                      color: Colors.amber,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              )
+                            : const SizedBox(
+                                height: 5,
+                              ),
                         Text(
                           details,
                           style: const TextStyle(
@@ -82,7 +89,6 @@ class DetailsPage extends StatelessWidget {
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),

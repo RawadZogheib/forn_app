@@ -314,7 +314,7 @@ class _OrderPageState extends State<OrderPage> {
     } //End For
   }
 
-  _beforeSendMail() {
+  _beforeSendMail() async {
     String txtMsg = '';
 
     for (int i = 0; i < globals.names.length; i++) {
@@ -327,7 +327,7 @@ class _OrderPageState extends State<OrderPage> {
             '<\/br>';
       }
     }
-    _sendMail(txtMsg);
+    await _sendMail(txtMsg);
     setState(() {
       globals.qtty = 0;
       globals.price = 0;

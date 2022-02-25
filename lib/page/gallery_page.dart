@@ -1,95 +1,112 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import '../widgets/other/details_page.dart';
+import 'package:forn_app/api/my_api.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
+import 'package:forn_app/widgets/PopUp/errorWarningPopup.dart';
 
-List<ImageDetails> _images = [
-  ImageDetails(
-    imagePath: 'Assets/img/img (1).jpg',
-    price: '',
-    title: 'New Year',
-    details:
-        'This image was taken during a party in New York on new years eve. Quite a colorful shot.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (2).jpg',
-    price: '\$10.00',
-    title: 'Spring',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (3).jpg',
-    price: '\$30.00',
-    title: 'Casual Look',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (4).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (5).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (6).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (7).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (8).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (9).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (10).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (11).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-  ImageDetails(
-    imagePath: 'Assets/img/img (12).jpg',
-    price: '\$20.00',
-    title: 'New York',
-    details:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
-  ),
-];
+import '../widgets/other/details_page.dart';
 
-class GalleryPage extends StatelessWidget {
+List<ImageDetails> _images = [];
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (1).jpg',
+//     price: '',
+//     title: 'New Year',
+//     details:
+//         'This image was taken during a party in New York on new years eve. Quite a colorful shot.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (2).jpg',
+//     price: '\$10.00',
+//     title: 'Spring',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (3).jpg',
+//     price: '\$30.00',
+//     title: 'Casual Look',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (4).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (5).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (6).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (7).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (8).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (9).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (10).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (11).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+//   ImageDetails(
+//     imagePath: 'Assets/img/img (12).jpg',
+//     price: '\$20.00',
+//     title: 'New York',
+//     details:
+//         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil error aspernatur, sequi inventore eligendi vitae dolorem animi suscipit. Nobis, cumque.',
+//   ),
+// ];
+
+class GalleryPage extends StatefulWidget {
+  @override
+  State<GalleryPage> createState() => _GalleryPageState();
+}
+
+class _GalleryPageState extends State<GalleryPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    _loadGallery();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,7 +149,7 @@ class GalleryPage extends StatelessWidget {
                   horizontal: 20,
                   vertical: 30,
                 ),
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                   color: globals.whiteBlue,
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(30),
@@ -167,7 +184,7 @@ class GalleryPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             image: DecorationImage(
-                              image: AssetImage(_images[index].imagePath),
+                              image: NetworkImage(_images[index].imagePath),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -183,6 +200,45 @@ class GalleryPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _loadGallery() async {
+    try {
+      _images.clear();
+      var data = {
+        'version': globals.version,
+      };
+
+      var res = await CallApi()
+          .postData(data, 'Gallery/Control/(Control)loadGallery.php');
+      print(res.body);
+      List<dynamic> body = json.decode(res.body);
+
+      if (body[0] == "success") {
+        for(int i= 0; i < body[1].length; i++){
+          _images.add(
+            ImageDetails(
+              imagePath: 'https://kwikCode.net/forn_php/Images/img%20(' + body[1][i][0] + ')',
+              price: body[1][i][1],
+              title: body[1][i][2],
+              details: body[1][i][3],
+            ),
+          );
+        }
+        setState(() {
+          _images;
+        });
+      } else if (body[0] == "empty") {
+        WarningPopup(context, 'No Item yet!!');
+      } else if (body[0] == "errorVersion") {
+        ErrorPopup(context, globals.errorVersion);
+      } else {
+        ErrorPopup(context, globals.errorElse);
+      }
+    } catch (e) {
+      print(e);
+      ErrorPopup(context, globals.errorException);
+    }
   }
 }
 

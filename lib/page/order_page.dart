@@ -8,7 +8,6 @@ import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
 import 'package:forn_app/widgets/code/dateDialog.dart';
 import 'package:forn_app/widgets/items/items.dart';
 import 'package:forn_app/widgets/items/itemsButton.dart';
-import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,6 +20,8 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+  bool _loading = false;
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -207,25 +208,31 @@ class _OrderPageState extends State<OrderPage> {
                         width: MediaQuery.of(context).size.width,
                         onPress: () {
                           if (globals.qtty > 0) {
-                            // _beforeSendMail();
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    dateDialog()).then((exit) {
-                              if (globals.send == true) {
-                                globals.send = false;
-                                _beforeSendMail();
-                              } else {
-                                setState(() {
+                            // _beforeSendMail();.
+                            if (_loading == false) {
+                              _loading = true;
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      dateDialog()).then((exit) async {
+                                if (globals.send == true) {
                                   globals.send = false;
-                                  _nullTextCode();
-                                });
-                              }
-                            });
+                                  await _beforeSendMail();
+                                } else {
+                                  setState(() {
+                                    globals.send = false;
+                                    _nullTextCode();
+                                  });
+                                }
+                                _loading = false;
+                              });
+                            } else {
+                              WarningPopup(
+                                  context, 'An order is already in progress');
+                            }
                           } else {
-                            myToast.showToast(
-                                'Choose some item before\n sending your order.',
-                                const Icon(Icons.warning));
+                            WarningPopup(context,
+                                'Choose some item before\n sending your order.');
                           }
                         },
                       ),

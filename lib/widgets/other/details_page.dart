@@ -30,15 +30,16 @@ class DetailsPage extends StatelessWidget {
                           bottomLeft: Radius.circular(30),
                           bottomRight: Radius.circular(30)),
                       image: DecorationImage(
-                        image: AssetImage(imagePath),
+                        image: NetworkImage(imagePath),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ),
               ),
-              Container(
-                height: 260,
+              SizedBox(
+                height: 180,//260
+                width: MediaQuery.of(context).size.width,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,7 +67,7 @@ class DetailsPage extends StatelessWidget {
                               ? Column(
                                   children: [
                                     Text(
-                                      price,
+                                      price + ' L.L.',
                                       style: const TextStyle(
                                         color: Colors.amber,
                                         fontSize: 18,

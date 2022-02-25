@@ -17,6 +17,8 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPage extends State<FirstPage> {
+  bool _loading = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -95,6 +97,20 @@ class _FirstPage extends State<FirstPage> {
                         width: 312,
                         child: Wrap(
                           children: [
+                            _loading == true
+                                ? Column(
+                                    children: [
+                                      const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                      ),
+                                    ],
+                                  )
+                                : Container(),
                             Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: MyButton(
@@ -102,7 +118,9 @@ class _FirstPage extends State<FirstPage> {
                                   height: 140,
                                   width: 140,
                                   onPress: () {
-                                    orderMethod();
+                                    if(_loading == false) {
+                                      orderMethod();
+                                    }
                                   },
                                 )),
                             Padding(
@@ -112,7 +130,8 @@ class _FirstPage extends State<FirstPage> {
                                   height: 140,
                                   width: 140,
                                   onPress: () {
-                                    Navigator.pushNamed(context, '/GalleryPage');
+                                    Navigator.pushNamed(
+                                        context, '/GalleryPage');
                                   },
                                 )),
                             Padding(
@@ -153,6 +172,9 @@ class _FirstPage extends State<FirstPage> {
   }
 
   void orderMethod() async {
+    setState(() {
+      _loading = true;
+    });
     try {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
       print("hello");
@@ -194,11 +216,17 @@ class _FirstPage extends State<FirstPage> {
       } else {
         showDialog(
             context: context,
-            builder: (BuildContext context) => codeDialog()).then((exit) {});
+            builder: (BuildContext context) => const codeDialog()).then((exit) {});
       }
     } catch (e) {
+      setState(() {
+        _loading = false;
+      });
       ErrorPopup(context, globals.errorException);
     }
+    setState(() {
+      _loading = false;
+    });
   }
 }
 

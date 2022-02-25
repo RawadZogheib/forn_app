@@ -324,7 +324,7 @@ class _OrderPageState extends State<OrderPage> {
             globals.names[i].toString() +
             '  x  ' +
             globals.qty[i].toString() +
-            '<\/br>';
+            '<br>';
       }
     }
     await _sendMail(txtMsg);

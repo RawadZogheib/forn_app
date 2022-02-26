@@ -71,12 +71,26 @@ class _MenuPageState extends State<MenuPage> {
               ),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  Wrap(
-                    children: _children,
+                  // SizedBox(
+                  //   height: 20,
+                  //   width: MediaQuery.of(context).size.width,
+                  // ),
+                  Expanded(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Wrap(
+                            children: _children,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -101,14 +115,41 @@ class _MenuPageState extends State<MenuPage> {
       if (body[0] == "success") {
         setState(() {
           for (int i = 0; i < body[1].length; i++) {
-
             _children.add(
               Container(
+                height: 40,
+                margin: const EdgeInsets.all(4.0),
+                decoration: const BoxDecoration(
+                  color: Colors.amberAccent,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
+                  ),
+                ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(body[1][i][0]),
-                    Text(body[1][i][1]),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      alignment: Alignment.center,
+                      child: Text(
+                        body[1][i][0],
+                        style: TextStyle(
+                          color: globals.blue_1,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      alignment: Alignment.center,
+                      child: Text(
+                        body[1][i][1],
+                        style: TextStyle(
+                          color: globals.blue_1,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

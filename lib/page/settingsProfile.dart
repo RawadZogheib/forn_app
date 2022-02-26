@@ -45,6 +45,9 @@ class _settingsProfileState extends State<settingsProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
         centerTitle: true,
         elevation: 0,
       ),

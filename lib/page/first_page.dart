@@ -145,8 +145,10 @@ class _FirstPage extends State<FirstPage> {
                                     //     await SharedPreferences.getInstance();
                                     // localStorage.clear();
                                     // print("cleaned");
-                                    myToast.showToast('There is no prices yet',
-                                        const Icon(Icons.alarm));
+                                    // myToast.showToast('There is no prices yet',
+                                    //     const Icon(Icons.alarm));
+                                    Navigator.pushNamed(
+                                        context, '/MenuPage');
                                   },
                                 )),
                             Padding(

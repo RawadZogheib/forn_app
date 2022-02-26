@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:forn_app/page/aboutUs_page.dart';
 import 'package:forn_app/page/first_page.dart';
 import 'package:forn_app/page/gallery_page.dart';
+import 'package:forn_app/page/menuPage.dart';
 import 'package:forn_app/page/order_page.dart';
 import 'package:forn_app/page/settingsProfile.dart';
 import 'package:forn_app/page/splashPage.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
             '/Settings': (context)=>settingsProfile(),
             '/AboutUs': (context)=>AboutUs(),
             '/GalleryPage': (context)=>GalleryPage(),
+            '/MenuPage': (context)=>MenuPage(),
           });
     });
   }

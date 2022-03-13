@@ -59,9 +59,6 @@ class _MenuPageState extends State<MenuPage> {
           ),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-              ),
               decoration: BoxDecoration(
                 color: globals.whiteBlue,
                 borderRadius: const BorderRadius.only(
@@ -78,14 +75,13 @@ class _MenuPageState extends State<MenuPage> {
                   Expanded(
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                       child: ClipRRect(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30),
                         ),
                         child: SingleChildScrollView(
-                          child: Wrap(
+                          child: Column(
                             children: _children,
                           ),
                         ),
@@ -103,6 +99,7 @@ class _MenuPageState extends State<MenuPage> {
 
   void _loadMenu() async {
     try {
+      _children.clear();
       var data = {
         'version': globals.version,
       };
@@ -114,13 +111,18 @@ class _MenuPageState extends State<MenuPage> {
 
       if (body[0] == "success") {
         setState(() {
+          _children.add(
+            SizedBox(
+              height: 8,
+            ),
+          );
           for (int i = 0; i < body[1].length; i++) {
             _children.add(
               Container(
-                height: 40,
-                margin: const EdgeInsets.all(4.0),
-                decoration: const BoxDecoration(
-                  color: Colors.amberAccent,
+                height: 50,
+                margin: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 8.0),
+                decoration: BoxDecoration(
+                  color: Colors.amber.shade50,
                   borderRadius: BorderRadius.all(
                     Radius.circular(30),
                   ),
@@ -155,6 +157,11 @@ class _MenuPageState extends State<MenuPage> {
               ),
             );
           }
+          _children.add(
+            SizedBox(
+              height: 8,
+            ),
+          );
         });
       } else if (body[0] == "empty") {
         WarningPopup(context, 'No Item yet!!');

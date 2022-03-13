@@ -210,7 +210,7 @@ class _GalleryPageState extends State<GalleryPage> {
       };
 
       var res = await CallApi()
-          .postData(data, 'Gallery/Control/(Control)loadGallery.php');
+          .postData(data, '/Gallery/Control/(Control)loadGallery.php');
       print(res.body);
       List<dynamic> body = json.decode(res.body);
 
@@ -218,10 +218,10 @@ class _GalleryPageState extends State<GalleryPage> {
         for(int i= 0; i < body[1].length; i++){
           _images.add(
             ImageDetails(
-              imagePath: 'https://kwikCode.net/forn_php/Images/img%20(' + body[1][i][0] + ')',
-              price: body[1][i][1],
-              title: body[1][i][2],
-              details: body[1][i][3],
+              imagePath: '${globals.myIP}/Images/img%20(' + body[1][i][0] + ')',
+              title: body[1][i][1],
+              details: body[1][i][2],
+              price: body[1][i][3],
             ),
           );
         }
@@ -244,14 +244,14 @@ class _GalleryPageState extends State<GalleryPage> {
 
 class ImageDetails {
   final String imagePath;
-  final String price;
   final String title;
   final String details;
+  final String price;
 
   ImageDetails({
     required this.imagePath,
-    required this.price,
     required this.title,
     required this.details,
+    required this.price,
   });
 }

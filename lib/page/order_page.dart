@@ -370,7 +370,7 @@ class _OrderPageState extends State<OrderPage> {
       };
 
       var res = await CallApi()
-          .postData(data, 'sendMail/Control/(Control)sendMail.php');
+          .postData(data, '/sendMail/Control/(Control)sendMail.php');
       print(res);
       print(res.body);
       List<dynamic> body = json.decode(res.body);
@@ -488,7 +488,7 @@ class _OrderPageState extends State<OrderPage> {
       };
 
       var res = await CallApi()
-          .postData(data, 'Order/Control/(Control)getItemPrice.php');
+          .postData(data, '/Order/Control/(Control)getItemPrice.php');
       print(res.body);
       List<dynamic> body = json.decode(res.body);
 

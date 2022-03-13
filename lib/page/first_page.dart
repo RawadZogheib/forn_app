@@ -201,7 +201,7 @@ class _FirstPage extends State<FirstPage> {
         };
 
         var res = await CallApi()
-            .postData(data, 'Order/Control/(Control)checkClock.php');
+            .postData(data, '/Order/Control/(Control)checkClock.php');
         print(res.body);
         List<dynamic> body = json.decode(res.body);
 
@@ -225,6 +225,7 @@ class _FirstPage extends State<FirstPage> {
         _loading = false;
       });
       ErrorPopup(context, globals.errorException);
+      print(e);
     }
     setState(() {
       _loading = false;

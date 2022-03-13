@@ -108,7 +108,7 @@ class _MenuPageState extends State<MenuPage> {
       };
 
       var res = await CallApi()
-          .postData(data, 'Order/Control/(Control)getItemPrice.php');
+          .postData(data, '/Order/Control/(Control)getItemPrice.php');
       print(res.body);
       List<dynamic> body = json.decode(res.body);
 

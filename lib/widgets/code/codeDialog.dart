@@ -11,7 +11,7 @@ class codeDialog extends StatefulWidget {
 class _codeDialogState extends State<codeDialog> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * 0.05),
       child: sixCode(),

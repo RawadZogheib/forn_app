@@ -61,13 +61,14 @@ class _sixCodeState extends State<sixCode> {
                 fontWeight: FontWeight.bold),
           ),
           const SizedBox(
-            height: 30.0,
+            height: 15.0,
           ),
           myTextInput(
             initialValue: '',
             textString: 'Enter your Name',
             labelText: 'Enter your Name',
             spaceAllowed: true,
+            enterAllowed: false,
             obscure: false,
             colBlue: colName,
             colBlue_1: colName_1,
@@ -88,6 +89,7 @@ class _sixCodeState extends State<sixCode> {
             textString: 'PhoneNumber',
             labelText: 'PhoneNumber',
             spaceAllowed: false,
+            enterAllowed: false,
             obscure: false,
             colBlue: colPhone,
             colBlue_1: colPhone_1,
@@ -109,6 +111,7 @@ class _sixCodeState extends State<sixCode> {
             textString: 'Your Location',
             labelText: 'Your Location',
             spaceAllowed: true,
+            enterAllowed: false,
             obscure: false,
             colBlue: colLocation,
             colBlue_1: colLocation_1,
@@ -122,7 +125,7 @@ class _sixCodeState extends State<sixCode> {
           ),
           myErrorText(errorText: errLoc, color: colErrLoc),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           InkWell(
             child: btn(

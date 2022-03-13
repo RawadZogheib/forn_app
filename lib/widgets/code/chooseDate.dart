@@ -53,7 +53,7 @@ class _chooseDateState extends State<chooseDate> {
                     fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                height: 30.0,
+                height: 15.0,
               ),
               myDateOfBirth(),
               const SizedBox(
@@ -68,6 +68,7 @@ class _chooseDateState extends State<chooseDate> {
                 textString: 'Description',
                 labelText: 'Description',
                 spaceAllowed: true,
+                enterAllowed: true,
                 obscure: false,
                 colBlue: colDesc,
                 colBlue_1: colDesc_1,

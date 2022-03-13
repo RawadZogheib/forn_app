@@ -7,6 +7,7 @@ class myTextInput extends StatelessWidget {
   var onChange;
   var keybType;
   bool spaceAllowed;
+  bool enterAllowed;
   bool obscure;
   var maxLength;
   var maxLines;
@@ -29,6 +30,7 @@ class myTextInput extends StatelessWidget {
       this.textInputAction,
       this.prefixText,
       required this.spaceAllowed,
+      required this.enterAllowed,
       required this.obscure,
       this.onChange});
 
@@ -66,6 +68,8 @@ class myTextInput extends StatelessWidget {
       inputFormatters: [
         if (spaceAllowed == false)
           FilteringTextInputFormatter.deny(RegExp(r"\s")),
+        if (enterAllowed == false)
+          FilteringTextInputFormatter.deny(RegExp(r"\n")),
       ],
     );
   }

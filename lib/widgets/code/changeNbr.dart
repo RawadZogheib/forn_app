@@ -47,6 +47,7 @@ class _ChangeNbrState extends State<ChangeNbr> {
         textString: 'Enter a number',
         labelText: 'Enter a number',
         spaceAllowed: false,
+        enterAllowed: false,
         obscure: false,
         colBlue: colName,
         colBlue_1: colName_1,

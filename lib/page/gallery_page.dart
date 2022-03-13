@@ -144,55 +144,58 @@ class _GalleryPageState extends State<GalleryPage> {
               height: 35,
             ),
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 30,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
                 ),
-                decoration: BoxDecoration(
-                  color: globals.whiteBlue,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: globals.whiteBlue,
                   ),
-                ),
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
-                  itemBuilder: (context, index) {
-                    return RawMaterialButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetailsPage(
-                              imagePath: _images[index].imagePath,
-                              title: _images[index].title,
-                              price: _images[index].price,
-                              details: _images[index].details,
-                              index: index,
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 30,
+                    ),
+                    itemBuilder: (context, index) {
+                      return RawMaterialButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailsPage(
+                                imagePath: _images[index].imagePath,
+                                title: _images[index].title,
+                                price: _images[index].price,
+                                details: _images[index].details,
+                                index: index,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      child: Hero(
-                        tag: 'logo$index',
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            image: DecorationImage(
-                              image: NetworkImage(_images[index].imagePath),
-                              fit: BoxFit.cover,
+                          );
+                        },
+                        child: Hero(
+                          tag: 'logo$index',
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                image: NetworkImage(_images[index].imagePath),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  },
-                  itemCount: _images.length,
+                      );
+                    },
+                    itemCount: _images.length,
+                  ),
                 ),
               ),
             )
@@ -215,7 +218,7 @@ class _GalleryPageState extends State<GalleryPage> {
       List<dynamic> body = json.decode(res.body);
 
       if (body[0] == "success") {
-        for(int i= 0; i < body[1].length; i++){
+        for (int i = 0; i < body[1].length; i++) {
           _images.add(
             ImageDetails(
               imagePath: '${globals.myIP}/Images/img%20(' + body[1][i][0] + ')',

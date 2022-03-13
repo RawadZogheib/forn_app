@@ -81,6 +81,10 @@ class _MenuPageState extends State<MenuPage> {
                           topRight: Radius.circular(30),
                         ),
                         child: SingleChildScrollView(
+                          padding: const  EdgeInsets.symmetric(
+                            vertical: 8.0,
+                            horizontal: 8.0,
+                          ),
                           child: Column(
                             children: _children,
                           ),
@@ -111,16 +115,11 @@ class _MenuPageState extends State<MenuPage> {
 
       if (body[0] == "success") {
         setState(() {
-          _children.add(
-            SizedBox(
-              height: 8,
-            ),
-          );
           for (int i = 0; i < body[1].length; i++) {
             _children.add(
               Container(
                 height: 50,
-                margin: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 8.0),
+                margin: const EdgeInsets.symmetric(vertical: 5.0),
                 decoration: BoxDecoration(
                   color: Colors.amber.shade50,
                   borderRadius: BorderRadius.all(
@@ -157,11 +156,6 @@ class _MenuPageState extends State<MenuPage> {
               ),
             );
           }
-          _children.add(
-            SizedBox(
-              height: 8,
-            ),
-          );
         });
       } else if (body[0] == "empty") {
         WarningPopup(context, 'No Item yet!!');

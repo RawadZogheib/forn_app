@@ -49,102 +49,101 @@ class _sixCodeState extends State<sixCode> {
   }
 
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(children: [
+    return Column(children: [
       Column(
-        children: [
-          Text(
-            "Insert the following fields",
-            style: TextStyle(
-                color: Colors.amber,
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 15.0,
-          ),
-          myTextInput(
-            initialValue: '',
-            textString: 'Enter your Name',
-            labelText: 'Enter your Name',
-            spaceAllowed: true,
-            enterAllowed: false,
-            obscure: false,
-            colBlue: colName,
-            colBlue_1: colName_1,
-            colBlue_2: colName_2,
-            onChange: (value) {
-              Name = value;
-            },
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          myErrorText(errorText: errName, color: colErrName),
-          const SizedBox(
-            height: 5,
-          ),
-          myTextInput(
-            initialValue: '',
-            textString: 'PhoneNumber',
-            labelText: 'PhoneNumber',
-            spaceAllowed: false,
-            enterAllowed: false,
-            obscure: false,
-            colBlue: colPhone,
-            colBlue_1: colPhone_1,
-            colBlue_2: colPhone_2,
-            keybType: const TextInputType.numberWithOptions(decimal: true),
-            onChange: (value) {
-              PhoneNb = value;
-            },
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          myErrorText(errorText: errPhone, color: colErrPhone),
-          const SizedBox(
-            height: 5,
-          ),
-          myTextInput(
-            initialValue: '',
-            textString: 'Your Location',
-            labelText: 'Your Location',
-            spaceAllowed: true,
-            enterAllowed: false,
-            obscure: false,
-            colBlue: colLocation,
-            colBlue_1: colLocation_1,
-            colBlue_2: colLocation_2,
-            onChange: (value) {
-              Location = value;
-            },
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          myErrorText(errorText: errLoc, color: colErrLoc),
-          const SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            child: btn(
-              btnText: 'OK',
-              height: 50,
-              width: 100,
-            ),
-            onTap: () {
-              //Navigator.pop(context);
-              _check();
-              //_sharedPref();
-              //Navigator.pushNamed(context, '/FirstPage');
-              //print(globals.sixCodeNb);
-              //_checkCode();
-            },
-          ),
-        ],
+    children: [
+      Text(
+        "Insert the following fields",
+        style: TextStyle(
+            color: Colors.amber,
+            fontSize: 20,
+            fontWeight: FontWeight.bold),
+      ),
+      const SizedBox(
+        height: 15.0,
+      ),
+      myTextInput(
+        initialValue: '',
+        textString: 'Enter your Name',
+        labelText: 'Enter your Name',
+        spaceAllowed: true,
+        enterAllowed: false,
+        obscure: false,
+        colBlue: colName,
+        colBlue_1: colName_1,
+        colBlue_2: colName_2,
+        onChange: (value) {
+          Name = value;
+        },
+      ),
+      const SizedBox(
+        height: 5,
+      ),
+      myErrorText(errorText: errName, color: colErrName),
+      const SizedBox(
+        height: 5,
+      ),
+      myTextInput(
+        initialValue: '',
+        textString: 'PhoneNumber',
+        labelText: 'PhoneNumber',
+        spaceAllowed: false,
+        enterAllowed: false,
+        obscure: false,
+        colBlue: colPhone,
+        colBlue_1: colPhone_1,
+        colBlue_2: colPhone_2,
+        keybType: const TextInputType.numberWithOptions(decimal: true),
+        onChange: (value) {
+          PhoneNb = value;
+        },
+      ),
+      const SizedBox(
+        height: 5,
+      ),
+      myErrorText(errorText: errPhone, color: colErrPhone),
+      const SizedBox(
+        height: 5,
+      ),
+      myTextInput(
+        initialValue: '',
+        textString: 'Your Location',
+        labelText: 'Your Location',
+        spaceAllowed: true,
+        enterAllowed: false,
+        obscure: false,
+        colBlue: colLocation,
+        colBlue_1: colLocation_1,
+        colBlue_2: colLocation_2,
+        onChange: (value) {
+          Location = value;
+        },
+      ),
+      const SizedBox(
+        height: 5,
+      ),
+      myErrorText(errorText: errLoc, color: colErrLoc),
+      const SizedBox(
+        height: 10,
+      ),
+      InkWell(
+        child: btn(
+          btnText: 'OK',
+          height: 50,
+          width: 100,
+        ),
+        onTap: () {
+          //Navigator.pop(context);
+          _check();
+          //_sharedPref();
+          //Navigator.pushNamed(context, '/FirstPage');
+          //print(globals.sixCodeNb);
+          //_checkCode();
+        },
+      ),
+    ],
       )
-    ]));
+    ]);
   }
 
   _check() {

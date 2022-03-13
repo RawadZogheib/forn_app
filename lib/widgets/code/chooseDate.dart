@@ -41,66 +41,65 @@ class _chooseDateState extends State<chooseDate> {
   }
 
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(children: [
-          Column(
-            children: [
-              Text(
-                "Last Step",
-                style: TextStyle(
-                    color: Colors.amber,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              myDateOfBirth(),
-              const SizedBox(
-                height: 5.0,
-              ),
-              myErrorText(errorText: errDate, color: colErrDate),
-              const SizedBox(
-                height: 5.0,
-              ),
-              myTextInput(
-                initialValue: '',
-                textString: 'Description',
-                labelText: 'Description',
-                spaceAllowed: true,
-                enterAllowed: true,
-                obscure: false,
-                colBlue: colDesc,
-                colBlue_1: colDesc_1,
-                colBlue_2: colDesc_2,
-                maxLines: 5,
-                maxLength: 500,
-                onChange: (value) {
-                  globals.description = value;
-                },
-              ),
-              myErrorText(errorText: errDesc, color: colErrDesc),
-              const SizedBox(
-                height: 10.0,
-              ),
-              InkWell(
-                child: btn(
-                  btnText: 'OK',
-                  height: 50,
-                  width: 100,
-                ),
-                onTap: () {
-                  //Navigator.pop(context);
-                  _check();
-                  //_sharedPref();
-                  //Navigator.pushNamed(context, '/FirstPage');
-                  //print(globals.sixCodeNb);
-                  //_checkCode();
-                },
-              ),
-            ],
-          )
-        ]));
+    return Column(children: [
+      Column(
+        children: [
+          Text(
+            "Last Step",
+            style: TextStyle(
+                color: Colors.amber,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 15.0,
+          ),
+          myDateOfBirth(),
+          const SizedBox(
+            height: 5.0,
+          ),
+          myErrorText(errorText: errDate, color: colErrDate),
+          const SizedBox(
+            height: 5.0,
+          ),
+          myTextInput(
+            initialValue: '',
+            textString: 'Description',
+            labelText: 'Description',
+            spaceAllowed: true,
+            enterAllowed: true,
+            obscure: false,
+            colBlue: colDesc,
+            colBlue_1: colDesc_1,
+            colBlue_2: colDesc_2,
+            maxLines: 5,
+            maxLength: 500,
+            onChange: (value) {
+              globals.description = value;
+            },
+          ),
+          myErrorText(errorText: errDesc, color: colErrDesc),
+          const SizedBox(
+            height: 10.0,
+          ),
+          InkWell(
+            child: btn(
+              btnText: 'OK',
+              height: 50,
+              width: 100,
+            ),
+            onTap: () {
+              //Navigator.pop(context);
+              _check();
+              //_sharedPref();
+              //Navigator.pushNamed(context, '/FirstPage');
+              //print(globals.sixCodeNb);
+              //_checkCode();
+            },
+          ),
+        ],
+      )
+    ]);
   }
 
   _check() {

@@ -216,9 +216,7 @@ class _FirstPage extends State<FirstPage> {
           ErrorPopup(context, globals.errorElse);
         }
       } else {
-        showDialog(
-            context: context,
-            builder: (BuildContext context) => const codeDialog()).then((exit) {});
+        _open();
       }
     } catch (e) {
       setState(() {
@@ -230,6 +228,54 @@ class _FirstPage extends State<FirstPage> {
     setState(() {
       _loading = false;
     });
+  }
+  _open() {
+    showModalBottomSheet<void>(
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.55,
+            decoration: BoxDecoration(
+              color: globals.white,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            child: Column(
+              children: [
+                ListTile(
+                  title: Icon(
+                    Icons.keyboard_arrow_down,
+                    size: 36,
+                  ),
+                ),
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                        ),
+                      ),
+                      child: codeDialog(),
+                    ),
+                  ),
+                ),
+              ],
+            ));
+      },
+    ).then((exit) {});
   }
 }
 

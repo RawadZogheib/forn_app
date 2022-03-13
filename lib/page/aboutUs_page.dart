@@ -72,7 +72,7 @@ class _AboutUsState extends State<AboutUs> {
                     child: Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
                               "Phone Number: ",
@@ -95,7 +95,7 @@ class _AboutUsState extends State<AboutUs> {
                           width: MediaQuery.of(context).size.width,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
                               "Email: ",
@@ -118,7 +118,7 @@ class _AboutUsState extends State<AboutUs> {
                           width: MediaQuery.of(context).size.width,
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
                               "Adress: ",
@@ -144,7 +144,7 @@ class _AboutUsState extends State<AboutUs> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       SizedBox(
-                        width: 211,
+                        width: 222,
                         child: InkWell(
                           onTap: () {
                             _launchURL();

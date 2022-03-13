@@ -53,18 +53,15 @@ class _sixCodeState extends State<sixCode> {
         child: Column(children: [
       Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.only(bottom: 15.0),
-            child: Text(
-              "Insert the following fields",
-              style: TextStyle(
-                  color: Colors.amber,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
+          Text(
+            "Insert the following fields",
+            style: TextStyle(
+                color: Colors.amber,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
           ),
           const SizedBox(
-            height: 5,
+            height: 30.0,
           ),
           myTextInput(
             initialValue: '',

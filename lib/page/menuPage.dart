@@ -29,6 +29,14 @@ class _MenuPageState extends State<MenuPage> {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
+        leading: IconButton(
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            icon: Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
         actions: <Widget>[
           IconButton(
               onPressed: () {

@@ -38,7 +38,7 @@ class DetailsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 180,//260
+                height: 180, //260
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,16 +97,18 @@ class DetailsPage extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              ),
-            ),
+            padding: const EdgeInsets.only(top: 35, left: 4.0),
+            child: IconButton(
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
           ),
         ],
       ),

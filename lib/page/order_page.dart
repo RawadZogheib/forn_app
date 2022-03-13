@@ -49,6 +49,14 @@ class _OrderPageState extends State<OrderPage> {
           iconTheme: const IconThemeData(
             color: Colors.white,
           ),
+          leading: IconButton(
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
           actions: <Widget>[
             IconButton(
                 onPressed: () {
@@ -523,10 +531,7 @@ class _OrderPageState extends State<OrderPage> {
       context: context,
       builder: (BuildContext context) {
         return Container(
-            height: MediaQuery
-                .of(context)
-                .size
-                .height * 0.55,
+            height: MediaQuery.of(context).size.height * 0.55,
             decoration: BoxDecoration(
               color: globals.white,
               borderRadius: const BorderRadius.only(

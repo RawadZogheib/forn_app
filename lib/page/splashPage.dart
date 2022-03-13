@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SplashPage extends StatefulWidget {
@@ -73,6 +74,8 @@ class _SplashPage extends State<SplashPage> {
 
   _timer() async {
     try {
+      // SharedPreferences localStorage = await SharedPreferences.getInstance();
+      // await localStorage.clear();
       Future.delayed(const Duration(seconds: 3), () {
         Navigator.pushNamedAndRemoveUntil(
             context, '/FirstPage', (route) => false);

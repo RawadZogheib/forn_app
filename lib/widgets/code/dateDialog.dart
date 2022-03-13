@@ -14,10 +14,10 @@ class dateDialog extends StatefulWidget {
 class _dateDialogState extends State<dateDialog> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView(padding: const EdgeInsets.all(8.0), children: const [
-        chooseDate(),
-      ]),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.05),
+      child: chooseDate(),
     );
   }
 }

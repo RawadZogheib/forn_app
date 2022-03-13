@@ -45,26 +45,23 @@ class _chooseDateState extends State<chooseDate> {
         child: Column(children: [
           Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.only(bottom: 28.0),
-                child: Text(
-                  "Last Step",
-                  style: TextStyle(
-                      color: Colors.amber,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
+              Text(
+                "Last Step",
+                style: TextStyle(
+                    color: Colors.amber,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                height: 5,
+                height: 15.0,
               ),
               myDateOfBirth(),
               const SizedBox(
-                height: 5,
+                height: 5.0,
               ),
               myErrorText(errorText: errDate, color: colErrDate),
               const SizedBox(
-                height: 5,
+                height: 5.0,
               ),
               myTextInput(
                 initialValue: '',
@@ -83,7 +80,7 @@ class _chooseDateState extends State<chooseDate> {
               ),
               myErrorText(errorText: errDesc, color: colErrDesc),
               const SizedBox(
-                height: 10,
+                height: 10.0,
               ),
               InkWell(
                 child: btn(

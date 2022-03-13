@@ -211,21 +211,7 @@ class _OrderPageState extends State<OrderPage> {
                             // _beforeSendMail();.
                             if (_loading == false) {
                               _loading = true;
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      dateDialog()).then((exit) async {
-                                if (globals.send == true) {
-                                  globals.send = false;
-                                  await _beforeSendMail();
-                                } else {
-                                  setState(() {
-                                    globals.send = false;
-                                    _nullTextCode();
-                                  });
-                                }
-                                _loading = false;
-                              });
+                              _open();
                             } else {
                               WarningPopup(
                                   context, 'An order is already in progress');
@@ -528,5 +514,65 @@ class _OrderPageState extends State<OrderPage> {
     colDateCalendar_2 = globals.blue_2;
     globals.description = '';
     globals.calendDate = '';
+  }
+
+  _open() {
+    showModalBottomSheet<void>(
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.55,
+            decoration: BoxDecoration(
+              color: globals.white,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            child: Column(
+              children: [
+                ListTile(
+                  title: Icon(
+                    Icons.keyboard_arrow_down,
+                    size: 36,
+                  ),
+                ),
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                        ),
+                      ),
+                      child: dateDialog(),
+                    ),
+                  ),
+                ),
+              ],
+            ));
+      },
+    ).then((exit) async {
+      if (globals.send == true) {
+        globals.send = false;
+        await _beforeSendMail();
+      } else {
+        setState(() {
+          globals.send = false;
+          _nullTextCode();
+        });
+      }
+      _loading = false;
+    });
   }
 }

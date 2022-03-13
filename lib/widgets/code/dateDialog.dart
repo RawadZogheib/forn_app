@@ -14,15 +14,26 @@ class dateDialog extends StatefulWidget {
 class _dateDialogState extends State<dateDialog> {
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.5)),
-      content: Container(
-        height: 35.h, //300
-        width: 40.w, //400
-        child: ListView(padding: const EdgeInsets.all(8.0), children: const [
-          chooseDate(),
-        ]),
-      ),
+    return Container(
+      child: ListView(padding: const EdgeInsets.all(8.0), children: const [
+        chooseDate(),
+      ]),
     );
   }
 }
+
+// class _dateDialogState extends State<dateDialog> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return AlertDialog(
+//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.5)),
+//       content: Container(
+//         height: 35.h, //300
+//         width: 40.w, //400
+//         child: ListView(padding: const EdgeInsets.all(8.0), children: const [
+//           chooseDate(),
+//         ]),
+//       ),
+//     );
+//   }
+// }

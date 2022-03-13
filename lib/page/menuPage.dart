@@ -135,7 +135,7 @@ class _MenuPageState extends State<MenuPage> {
                       child: Text(
                         body[1][i][0],
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           color: globals.blue_1,
                           fontWeight: FontWeight.bold,
                         ),
@@ -147,7 +147,7 @@ class _MenuPageState extends State<MenuPage> {
                       child: Text(
                         body[1][i][1],
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           color: globals.blue_1,
                           fontWeight: FontWeight.bold,
                         ),

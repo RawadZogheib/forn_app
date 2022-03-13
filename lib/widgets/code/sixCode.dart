@@ -54,7 +54,7 @@ class _sixCodeState extends State<sixCode> {
       Column(
         children: [
           const Padding(
-            padding: EdgeInsets.only(bottom: 28.0),
+            padding: EdgeInsets.only(bottom: 15.0),
             child: Text(
               "Insert the following fields",
               style: TextStyle(
@@ -125,7 +125,7 @@ class _sixCodeState extends State<sixCode> {
           ),
           myErrorText(errorText: errLoc, color: colErrLoc),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
           InkWell(
             child: btn(

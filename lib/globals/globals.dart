@@ -13,7 +13,6 @@ const String version = "v1.0";
 //Server Ip  (page[/my_api.dart])
 const String myIP = "https://kwikcode.net/forn_php";
 
-
 //url
 const String url = 'https://KwikCode.net';
 

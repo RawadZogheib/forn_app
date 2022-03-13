@@ -31,7 +31,6 @@ class _FirstPage extends State<FirstPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           iconTheme: const IconThemeData(
             color: Colors.white,
@@ -236,47 +235,45 @@ class _FirstPage extends State<FirstPage> {
       backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return SafeArea(
-          child: Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height * 0.55,
-              decoration: BoxDecoration(
-                color: globals.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
+        return Container(
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 0.55,
+            decoration: BoxDecoration(
+              color: globals.white,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
               ),
-              child: Column(
-                children: [
-                  ListTile(
-                    title: Icon(
-                      Icons.keyboard_arrow_down,
-                      size: 36,
-                    ),
+            ),
+            child: Column(
+              children: [
+                ListTile(
+                  title: Icon(
+                    Icons.keyboard_arrow_down,
+                    size: 36,
                   ),
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30),
-                          ),
+                ),
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
                         ),
-                        child: sixCode(),
                       ),
+                      child: sixCode(),
                     ),
                   ),
-                ],
-              )),
-        );
+                ),
+              ],
+            ));
       },
     ).then((exit) {});
   }

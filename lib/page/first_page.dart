@@ -8,7 +8,6 @@ import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:forn_app/widgets/PopUp/errorWarningPopup.dart';
 import 'package:forn_app/widgets/button/myButton.dart';
 import 'package:forn_app/widgets/code/sixCode.dart';
-import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FirstPage extends StatefulWidget {
@@ -118,7 +117,7 @@ class _FirstPage extends State<FirstPage> {
                                   height: 140,
                                   width: 140,
                                   onPress: () {
-                                    if(_loading == false) {
+                                    if (_loading == false) {
                                       orderMethod();
                                     }
                                   },
@@ -147,8 +146,7 @@ class _FirstPage extends State<FirstPage> {
                                     // print("cleaned");
                                     // myToast.showToast('There is no prices yet',
                                     //     const Icon(Icons.alarm));
-                                    Navigator.pushNamed(
-                                        context, '/MenuPage');
+                                    Navigator.pushNamed(context, '/MenuPage');
                                   },
                                 )),
                             Padding(
@@ -229,6 +227,7 @@ class _FirstPage extends State<FirstPage> {
       _loading = false;
     });
   }
+
   _open() {
     showModalBottomSheet<void>(
       isScrollControlled: true,
@@ -236,10 +235,9 @@ class _FirstPage extends State<FirstPage> {
       context: context,
       builder: (BuildContext context) {
         return Container(
-            height: MediaQuery
-                .of(context)
-                .size
-                .height * 0.55,
+            height: MediaQuery.of(context).size.height * 0.55,
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
             decoration: BoxDecoration(
               color: globals.white,
               borderRadius: const BorderRadius.only(

@@ -532,6 +532,8 @@ class _OrderPageState extends State<OrderPage> {
       builder: (BuildContext context) {
         return Container(
             height: MediaQuery.of(context).size.height * 0.55,
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
             decoration: BoxDecoration(
               color: globals.white,
               borderRadius: const BorderRadius.only(

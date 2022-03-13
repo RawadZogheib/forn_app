@@ -7,7 +7,7 @@ import 'package:forn_app/api/my_api.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:forn_app/widgets/PopUp/errorWarningPopup.dart';
 import 'package:forn_app/widgets/button/myButton.dart';
-import 'package:forn_app/widgets/code/codeDialog.dart';
+import 'package:forn_app/widgets/code/sixCode.dart';
 import 'package:forn_app/widgets/other/MyToast.dart' as myToast;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,6 +31,7 @@ class _FirstPage extends State<FirstPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           iconTheme: const IconThemeData(
             color: Colors.white,
@@ -235,45 +236,47 @@ class _FirstPage extends State<FirstPage> {
       backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return Container(
-            height: MediaQuery
-                .of(context)
-                .size
-                .height * 0.55,
-            decoration: BoxDecoration(
-              color: globals.white,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
+        return SafeArea(
+          child: Container(
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * 0.55,
+              decoration: BoxDecoration(
+                color: globals.white,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
               ),
-            ),
-            child: Column(
-              children: [
-                ListTile(
-                  title: Icon(
-                    Icons.keyboard_arrow_down,
-                    size: 36,
-                  ),
-                ),
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Icon(
+                      Icons.keyboard_arrow_down,
+                      size: 36,
                     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
-                        ),
+                  ),
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
                       ),
-                      child: codeDialog(),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30),
+                          ),
+                        ),
+                        child: sixCode(),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ));
+                ],
+              )),
+        );
       },
     ).then((exit) {});
   }

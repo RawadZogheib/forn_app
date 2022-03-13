@@ -7,8 +7,6 @@ import 'package:forn_app/page/order_page.dart';
 import 'package:forn_app/page/settingsProfile.dart';
 import 'package:forn_app/page/splashPage.dart';
 import 'package:forn_app/widgets/code/chooseDate.dart';
-import 'package:forn_app/widgets/code/codeDialog.dart';
-import 'package:forn_app/widgets/code/dateDialog.dart';
 import 'package:forn_app/widgets/code/sixCode.dart';
 import 'package:sizer/sizer.dart';
 
@@ -35,9 +33,7 @@ class MyApp extends StatelessWidget {
             '/FirstPage': (context) => FirstPage(),
             '/OrderPage': (context) =>OrderPage(),
             '/sixCode': (context)=>sixCode(),
-            '/codeDialog': (context)=>codeDialog(),
             '/chooseDate': (context)=>chooseDate(),
-            '/dateDialog': (context)=>dateDialog(),
             '/Settings': (context)=>settingsProfile(),
             '/AboutUs': (context)=>AboutUs(),
             '/GalleryPage': (context)=>GalleryPage(),

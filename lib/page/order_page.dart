@@ -5,7 +5,7 @@ import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:forn_app/widgets/PopUp/errorWarningPopup.dart';
 import 'package:forn_app/widgets/button/myButton.dart';
 import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
-import 'package:forn_app/widgets/code/dateDialog.dart';
+import 'package:forn_app/widgets/code/chooseDate.dart';
 import 'package:forn_app/widgets/items/items.dart';
 import 'package:forn_app/widgets/items/itemsButton.dart';
 import 'package:motion_toast/motion_toast.dart';
@@ -560,7 +560,7 @@ class _OrderPageState extends State<OrderPage> {
                           topRight: Radius.circular(30),
                         ),
                       ),
-                      child: dateDialog(),
+                      child: chooseDate(),
                     ),
                   ),
                 ),

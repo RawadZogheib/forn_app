@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:forn_app/globals/globals.dart' as globals;
 import 'package:forn_app/widgets/button/myButton.dart';
+import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
 import 'package:forn_app/widgets/textInput/myErrorText.dart';
 import 'package:forn_app/widgets/textInput/myTextInput.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'package:forn_app/widgets/calendarDate/myCalendarDate.dart';
 
 RegExp phoneExp = new RegExp(r"[0-9]{8}\b");
 
@@ -41,65 +39,68 @@ class _chooseDateState extends State<chooseDate> {
   }
 
   Widget build(BuildContext context) {
-    return Column(children: [
-      Column(
+    return ListView(
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.05),
         children: [
-          Text(
-            "Last Step",
-            style: TextStyle(
-                color: Colors.amber,
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 15.0,
-          ),
-          myDateOfBirth(),
-          const SizedBox(
-            height: 5.0,
-          ),
-          myErrorText(errorText: errDate, color: colErrDate),
-          const SizedBox(
-            height: 5.0,
-          ),
-          myTextInput(
-            initialValue: '',
-            textString: 'Description',
-            labelText: 'Description',
-            spaceAllowed: true,
-            enterAllowed: true,
-            obscure: false,
-            colBlue: colDesc,
-            colBlue_1: colDesc_1,
-            colBlue_2: colDesc_2,
-            maxLines: 5,
-            maxLength: 500,
-            onChange: (value) {
-              globals.description = value;
-            },
-          ),
-          myErrorText(errorText: errDesc, color: colErrDesc),
-          const SizedBox(
-            height: 10.0,
-          ),
-          InkWell(
-            child: btn(
-              btnText: 'OK',
-              height: 50,
-              width: 100,
-            ),
-            onTap: () {
-              //Navigator.pop(context);
-              _check();
-              //_sharedPref();
-              //Navigator.pushNamed(context, '/FirstPage');
-              //print(globals.sixCodeNb);
-              //_checkCode();
-            },
-          ),
-        ],
-      )
-    ]);
+          Column(
+            children: [
+              Text(
+                "Last Step",
+                style: TextStyle(
+                    color: Colors.amber,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              myDateOfBirth(),
+              const SizedBox(
+                height: 5.0,
+              ),
+              myErrorText(errorText: errDate, color: colErrDate),
+              const SizedBox(
+                height: 5.0,
+              ),
+              myTextInput(
+                initialValue: '',
+                textString: 'Description',
+                labelText: 'Description',
+                spaceAllowed: true,
+                enterAllowed: true,
+                obscure: false,
+                colBlue: colDesc,
+                colBlue_1: colDesc_1,
+                colBlue_2: colDesc_2,
+                maxLines: 5,
+                maxLength: 500,
+                onChange: (value) {
+                  globals.description = value;
+                },
+              ),
+              myErrorText(errorText: errDesc, color: colErrDesc),
+              const SizedBox(
+                height: 10.0,
+              ),
+              InkWell(
+                child: btn(
+                  btnText: 'OK',
+                  height: 50,
+                  width: 100,
+                ),
+                onTap: () {
+                  //Navigator.pop(context);
+                  _check();
+                  //_sharedPref();
+                  //Navigator.pushNamed(context, '/FirstPage');
+                  //print(globals.sixCodeNb);
+                  //_checkCode();
+                },
+              ),
+            ],
+          )
+        ]);
   }
 
   _check() {
@@ -110,7 +111,9 @@ class _chooseDateState extends State<chooseDate> {
     errDesc = '';
     colErrDesc = globals.transparent;
 
-    if (globals.calendDate != '' && globals.calendDate != null && globals.calendDate != 'null') {
+    if (globals.calendDate != '' &&
+        globals.calendDate != null &&
+        globals.calendDate != 'null') {
       setState(() {
         colDateCalendar = Colors.amber.shade50;
         colDateCalendar_1 = Colors.amber.shade900;
@@ -127,7 +130,9 @@ class _chooseDateState extends State<chooseDate> {
       });
     }
 
-    if (globals.description != '' && globals.description != null && globals.description != 'null') {
+    if (globals.description != '' &&
+        globals.description != null &&
+        globals.description != 'null') {
       setState(() {
         colDesc = Colors.amber.shade50;
         colDesc_1 = Colors.amber.shade900;
@@ -145,14 +150,12 @@ class _chooseDateState extends State<chooseDate> {
     }
 
     if (isEmpty == false) {
-        // _sharedPref();
-        // Navigator.pop(context);
-        // Navigator.pushNamed(context, '/OrderPage');
+      // _sharedPref();
+      // Navigator.pop(context);
+      // Navigator.pushNamed(context, '/OrderPage');
       globals.send = true;
       Navigator.pop(context);
       //_beforeSendMail();
     }
   }
-
-
 }

@@ -49,7 +49,10 @@ class _sixCodeState extends State<sixCode> {
   }
 
   Widget build(BuildContext context) {
-    return Column(children: [
+    return ListView(
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.05),
+        children: [
       Column(
     children: [
       Text(

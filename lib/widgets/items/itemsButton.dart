@@ -6,9 +6,9 @@ class ItemsButton extends StatefulWidget {
   var id;
   var itemName;
   int itemQty;
-  var onMinusTap;
-  var onPlusTap;
-  var onMidTap;
+  Function onMinusTap;
+  Function onPlusTap;
+  Function onMidTap;
 
   ItemsButton(
       {required this.id,

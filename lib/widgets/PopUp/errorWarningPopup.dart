@@ -10,7 +10,7 @@ ErrorPopup(BuildContext context, String? text) {
     primaryColor: globals.red2,
     secondaryColor: globals.red1,
     toastDuration: const Duration(seconds: 3),
-    backgroundType: BACKGROUND_TYPE.solid,
+    backgroundType: BackgroundType.solid,
     title: const Text(
       'Error',
       style: TextStyle(fontWeight: FontWeight.bold),
@@ -18,8 +18,8 @@ ErrorPopup(BuildContext context, String? text) {
     description: Text(
       text != null ? text : 'Unexpected Error.',
     ),
-    position: MOTION_TOAST_POSITION.bottom,
-    animationType: ANIMATION.fromRight,
+    position: MotionToastPosition.bottom,
+    animationType: AnimationType.fromRight,
     height: 100,
   ).show(context);
 }
@@ -30,7 +30,7 @@ WarningPopup(BuildContext context, String? text) {
     primaryColor: globals.yellow2,
     secondaryColor: globals.yellow1,
     toastDuration: const Duration(seconds: 3),
-    backgroundType: BACKGROUND_TYPE.solid,
+    backgroundType: BackgroundType.solid,
     title: const Text(
       'Warning',
       style: TextStyle(fontWeight: FontWeight.bold),
@@ -38,8 +38,8 @@ WarningPopup(BuildContext context, String? text) {
     description: Text(
       text != null ? text : 'Unexpected Warning.',
     ),
-    position: MOTION_TOAST_POSITION.bottom,
-    animationType: ANIMATION.fromRight,
+    position: MotionToastPosition.bottom,
+    animationType: AnimationType.fromRight,
     height: 100,
   ).show(context);
 }

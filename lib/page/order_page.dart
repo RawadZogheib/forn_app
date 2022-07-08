@@ -374,7 +374,7 @@ class _OrderPageState extends State<OrderPage> {
           primaryColor: globals.yellow2,
           secondaryColor: globals.yellow1,
           toastDuration: const Duration(seconds: 3),
-          backgroundType: BACKGROUND_TYPE.solid,
+          backgroundType: BackgroundType.solid,
           title: const Text(
             'Success',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -382,8 +382,8 @@ class _OrderPageState extends State<OrderPage> {
           description: const Text(
             'Email has been sent.',
           ),
-          position: MOTION_TOAST_POSITION.bottom,
-          animationType: ANIMATION.fromRight,
+          position: MotionToastPosition.bottom,
+          animationType: AnimationType.fromRight,
           height: 100,
         ).show(context);
         //myToast.showToast('Email has been sent.', const Icon(Icons.email));
@@ -393,7 +393,7 @@ class _OrderPageState extends State<OrderPage> {
           primaryColor: globals.red2,
           secondaryColor: globals.red1,
           toastDuration: const Duration(seconds: 3),
-          backgroundType: BACKGROUND_TYPE.solid,
+          backgroundType: BackgroundType.solid,
           title: const Text(
             'Error',
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -401,8 +401,8 @@ class _OrderPageState extends State<OrderPage> {
           description: const Text(
             'Message not sent.',
           ),
-          position: MOTION_TOAST_POSITION.bottom,
-          animationType: ANIMATION.fromRight,
+          position: MotionToastPosition.bottom,
+          animationType: AnimationType.fromRight,
           height: 100,
         ).show(context);
         print('Message not sent.');
@@ -457,7 +457,7 @@ class _OrderPageState extends State<OrderPage> {
         primaryColor: globals.red2,
         secondaryColor: globals.red1,
         toastDuration: const Duration(seconds: 3),
-        backgroundType: BACKGROUND_TYPE.solid,
+        backgroundType: BackgroundType.solid,
         title: const Text(
           'Error',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -465,8 +465,8 @@ class _OrderPageState extends State<OrderPage> {
         description: const Text(
           'Message not sent.',
         ),
-        position: MOTION_TOAST_POSITION.bottom,
-        animationType: ANIMATION.fromRight,
+        position: MotionToastPosition.bottom,
+        animationType: AnimationType.fromRight,
         height: 100,
       ).show(context);
       // myToast.showToast('Message not sent.', const Icon(Icons.email));
